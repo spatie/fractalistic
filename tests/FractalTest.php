@@ -2,7 +2,6 @@
 
 namespace Spatie\Fractalistic\Test;
 
-use Illuminate\Http\JsonResponse;
 use League\Fractal\Pagination\Cursor;
 use Spatie\Fractalistic\ArraySerializer;
 
