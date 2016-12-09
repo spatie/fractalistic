@@ -1,4 +1,4 @@
-# A Fractal service provider for Laravel 5 and Lumen
+# Making working with Fractal a breeze
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/fractalistic.svg?style=flat-square)](https://packagist.org/packages/spatie/fractalistic)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -7,7 +7,7 @@
 [![StyleCI](https://styleci.io/repos/43743138/shield?branch=master)](https://styleci.io/repos/43743138)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/fractalistic.svg?style=flat-square)](https://packagist.org/packages/spatie/fractalistic)
 
-[Fractal](http://fractal.thephpleague.com/) is an amazing package to transform data before using it in an API. Unfortunately working with it can be a bit verbose.
+[Fractal](http://fractal.thephpleague.com/) is an amazing package to transform data before using it in an API. Unfortunately working with Fractal can be a bit verbose.
 
 Using Fractal data can be transformed like this:
 
