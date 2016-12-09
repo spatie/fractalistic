@@ -7,7 +7,6 @@ use IteratorAggregate;
 
 class TraversableClass implements IteratorAggregate
 {
-
     /** @var array */
     protected $items;
 
