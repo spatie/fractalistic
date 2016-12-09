@@ -3,7 +3,6 @@
 namespace Spatie\Fractalistic\Test;
 
 use PHPUnit_Framework_TestCase;
-use Spatie\Fractalistic\FractalServiceProvider;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase
 {
