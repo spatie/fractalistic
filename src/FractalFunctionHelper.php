@@ -2,8 +2,8 @@
 
 namespace Spatie\Fractalistic;
 
-use League\Fractal\Manager;
 use Traversable;
+use League\Fractal\Manager;
 use League\Fractal\Serializer\SerializerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidFractalHelperArgument;
 
