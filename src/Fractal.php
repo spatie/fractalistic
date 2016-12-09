@@ -152,6 +152,10 @@ class Fractal implements JsonSerializable
      */
     public function transformWith($transformer)
     {
+        if (is_string($transformer) && class_exists($transformer)) {
+            $transformer = new $transformer;
+        }
+
         $this->transformer = $transformer;
 
         return $this;

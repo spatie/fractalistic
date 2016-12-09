@@ -51,11 +51,27 @@ class FractalTest extends TestCase
     }
 
     /** @test */
-    public function it_can_provides_a_method_to_specify_the_transformer()
+    public function it_provides_a_method_to_specify_the_transformer()
     {
         $array = $this->fractal
             ->collection($this->testBooks)
             ->transformWith(new TestTransformer())
+            ->toArray();
+
+        $expectedArray = ['data' => [
+            ['id' => 1, 'author' => 'Philip K Dick'],
+            ['id' => 2, 'author' => 'George R. R. Satan'],
+        ]];
+
+        $this->assertEquals($expectedArray, $array);
+    }
+
+    /** @test */
+    public function it_can_accept_a_class_name_as_a_transformer()
+    {
+        $array = $this->fractal
+            ->collection($this->testBooks)
+            ->transformWith(TestTransformer::class)
             ->toArray();
 
         $expectedArray = ['data' => [
