@@ -2,6 +2,7 @@
 
 namespace Spatie\Fractalistic;
 
+use Traversable;
 use JsonSerializable;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface;
@@ -9,7 +10,6 @@ use League\Fractal\Pagination\PaginatorInterface;
 use League\Fractal\Serializer\SerializerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidTransformation;
 use Spatie\Fractalistic\Exceptions\NoTransformerSpecified;
-use Traversable;
 
 class Fractal implements JsonSerializable
 {
