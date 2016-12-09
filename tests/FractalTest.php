@@ -101,17 +101,6 @@ class FractalTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_handled_by_response_without_using_a_transformer_to_array()
-    {
-        $json = $this->fractal->collection($this->testBooks, new TestTransformer());
-        $response = new JsonResponse($json);
-
-        $expectedJson = '{"data":[{"id":1,"author":"Philip K Dick"},{"id":2,"author":"George R. R. Satan"}]}';
-
-        $this->assertEquals($expectedJson, $response->getContent());
-    }
-
-    /** @test */
     public function it_provides_chainable_methods()
     {
         $this->assertInstanceOf(get_class($this->fractal), $this->fractal->item('test'));

@@ -339,18 +339,36 @@ class Fractal implements JsonSerializable
      */
     public function __call($name, array $arguments)
     {
-        if (starts_with($name, ['include'])) {
+        if ($this->startsWith($name, ['include'])) {
             $includeName = lcfirst(substr($name, strlen('include')));
 
             return $this->parseIncludes($includeName);
         }
 
-        if (starts_with($name, ['exclude'])) {
+        if ($this->startsWith($name, ['exclude'])) {
             $excludeName = lcfirst(substr($name, strlen('exclude')));
 
             return $this->parseExcludes($excludeName);
         }
 
         trigger_error('Call to undefined method '.__CLASS__.'::'.$name.'()', E_USER_ERROR);
+    }
+
+    /**
+     * Determine if a given string starts with a given substring.
+     *
+     * @param  string  $haystack
+     * @param  string|array  $needles
+     * @return bool
+     */
+    protected function startsWith($haystack, $needles)
+    {
+        foreach ((array) $needles as $needle) {
+            if ($needle != '' && substr($haystack, 0, strlen($needle)) === (string) $needle) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

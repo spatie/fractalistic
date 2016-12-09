@@ -65,7 +65,7 @@ class FractalFunctionHelperTest extends TestCase
     /** @test */
     public function it_can_transform_the_given_traversable_with_the_given_transformer()
     {
-        $transformedData = fractal(collect($this->testBooks), new TestTransformer())->toArray();
+        $transformedData = fractal(new TraversableClass($this->testBooks), new TestTransformer())->toArray();
 
         $expectedArray = ['data' => [
             ['id' => 1, 'author' => 'Philip K Dick'],
@@ -79,7 +79,7 @@ class FractalFunctionHelperTest extends TestCase
     public function it_perform_a_transformation_with_the_given_serializer()
     {
         $transformedData = fractal(
-            collect($this->testBooks),
+            $this->testBooks,
             new TestTransformer(),
             new ArraySerializer()
         )->toArray();
@@ -98,7 +98,7 @@ class FractalFunctionHelperTest extends TestCase
         $this->expectException(InvalidFractalHelperArgument::class);
 
         fractal(
-            collect($this->testBooks),
+            $this->testBooks,
             new TestTransformer(),
             new ArraySerializer(),
             'extra argument'
