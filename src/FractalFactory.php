@@ -7,7 +7,7 @@ use League\Fractal\Manager;
 use League\Fractal\Serializer\SerializerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidFractalHelperArgument;
 
-class FractalFunctionHelper
+class FractalFactory
 {
     /** @var \Spatie\Fractalistic\Fractal */
     protected $fractal;

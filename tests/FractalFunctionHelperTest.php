@@ -11,7 +11,7 @@ class FractalFunctionHelperTest extends TestCase
     /** @test */
     public function it_returns_an_instance_of_fractal_when_passing_no_arguments()
     {
-        $this->assertInstanceOf(Fractal::class, fractal());
+        $this->assertInstanceOf(Fractal::class, Fractal::create());
     }
 
     /** @test */
@@ -19,13 +19,13 @@ class FractalFunctionHelperTest extends TestCase
     {
         $this->expectException(InvalidFractalHelperArgument::class);
 
-        fractal([]);
+        Fractal::create([]);
     }
 
     /** @test */
     public function it_can_transform_the_given_array_with_the_given_closure()
     {
-        $transformedData = fractal(['item1', 'item2'], function ($item) {
+        $transformedData = Fractal::create(['item1', 'item2'], function ($item) {
             return $item.'-transformed';
         })->toArray();
 
@@ -40,7 +40,7 @@ class FractalFunctionHelperTest extends TestCase
         $item = new \stdClass();
         $item->name = 'item1';
 
-        $transformedData = fractal($item, function ($item) {
+        $transformedData = Fractal::create($item, function ($item) {
             return ["{$item->name}-transformed"];
         })->toArray();
 
@@ -52,7 +52,7 @@ class FractalFunctionHelperTest extends TestCase
     /** @test */
     public function it_can_transform_the_given_array_with_the_given_transformer()
     {
-        $transformedData = fractal($this->testBooks, new TestTransformer())->toArray();
+        $transformedData = Fractal::create($this->testBooks, new TestTransformer())->toArray();
 
         $expectedArray = ['data' => [
             ['id' => 1, 'author' => 'Philip K Dick'],
@@ -65,7 +65,7 @@ class FractalFunctionHelperTest extends TestCase
     /** @test */
     public function it_can_transform_the_given_traversable_with_the_given_transformer()
     {
-        $transformedData = fractal(new TraversableClass($this->testBooks), new TestTransformer())->toArray();
+        $transformedData = Fractal::create(new TraversableClass($this->testBooks), new TestTransformer())->toArray();
 
         $expectedArray = ['data' => [
             ['id' => 1, 'author' => 'Philip K Dick'],
@@ -78,7 +78,7 @@ class FractalFunctionHelperTest extends TestCase
     /** @test */
     public function it_perform_a_transformation_with_the_given_serializer()
     {
-        $transformedData = fractal(
+        $transformedData = Fractal::create(
             $this->testBooks,
             new TestTransformer(),
             new ArraySerializer()
@@ -97,7 +97,7 @@ class FractalFunctionHelperTest extends TestCase
     {
         $this->expectException(InvalidFractalHelperArgument::class);
 
-        fractal(
+        Fractal::create(
             $this->testBooks,
             new TestTransformer(),
             new ArraySerializer(),

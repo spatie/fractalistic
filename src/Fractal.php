@@ -45,6 +45,20 @@ class Fractal implements JsonSerializable
     /** @var array */
     protected $meta = [];
 
+    /**
+     * @param null|mixed $data
+     * @param null|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|\League\Fractal\Serializer\SerializerAbstract $serializer
+     *
+     * @return \Spatie\Fractalistic\Fractal
+     */
+    public static function create()
+    {
+        $factory = new FractalFactory(func_get_args());
+
+        return $factory->getFractalInstance();
+    }
+
     /** @param \League\Fractal\Manager $manager */
     public function __construct(Manager $manager)
     {

@@ -33,7 +33,7 @@ $manager->createData($resource)->toArray();
 This package makes that process a tad easier:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($books)
    ->transformWith(new BookTransformer())
    ->includeCharacters()
@@ -43,7 +43,7 @@ fractal()
 There's also a very short syntax available to quickly transform data:
 
 ```php
-fractal($books, new BookTransformer())->toArray();
+Fractal::create($books, new BookTransformer())->toArray();
 ```
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all 
@@ -77,7 +77,7 @@ But know that any structure that can be looped (for instance a collection) can b
 Let's start with a simple transformation.
 
 ```php
-fractal()
+Spatie\Fractalistic\Fractal::create()
    ->collection($books)
    ->transformWith(function($book) { return ['id' => $book['id']];})
    ->toArray();
@@ -88,10 +88,12 @@ This will return:
 ['data' => [['id' => 1], ['id' => 2]]
 ```
 
+In all following examples it's assumed that you imported the `Spatie\Fractalistic\Fractal` at the top of your php file.
+
 Instead of using a closure you can also pass [a Transformer](http://fractal.thephpleague.com/transformers/):
 
 ```php
-fractal()
+Fractal::create()
    ->collection($books)
    ->transformWith(new BookTransformer())
    ->toArray();
@@ -101,17 +103,17 @@ To make your code a bit shorter you could also pass the transform closure or cla
 second parameter of the `collection`-method:
 
 ```php
-fractal()->collection($books, new BookTransformer())->toArray();
+Fractal::create()->collection($books, new BookTransformer())->toArray();
 ```
 
 Want to get some sweet json output instead of an array? No problem!
 ```php
-fractal()->collection($books, new BookTransformer())->toJson();
+Fractal::create()->collection($books, new BookTransformer())->toJson();
 ```
 
 A single item can also be transformed:
 ```php
-fractal()->item($books[0], new BookTransformer())->toArray();
+Fractal::create()->item($books[0], new BookTransformer())->toArray();
 ```
 
 ## Using a serializer
@@ -130,7 +132,7 @@ The `Spatie\Fractalistic\ArraySerializer` comes out of the box. It removes the `
 both collections and items.
 
 ```php
-fractal()
+Fractal::create()
    ->collection($books)
    ->transformWith(function($book) { return ['id' => $book['id']];})
    ->serializeWith(new \Spatie\Fractalistic\ArraySerializer())
@@ -150,7 +152,7 @@ Fractal provides support for [optionally including data](http://fractal.thephple
 the data you're exporting. You can use Fractal's `parseIncludes` which accepts a string or an array:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($this->testBooks, new TestTransformer())
    ->parseIncludes(['characters', 'publisher'])
    ->toArray();
@@ -160,7 +162,7 @@ To improve readablity you can also use a function named `include` followed by th
 of the include you want to... include:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($this->testBooks, new TestTransformer())
    ->includeCharacters()
    ->includePublisher()
@@ -173,7 +175,7 @@ Similar to includes Fractal also provides support for [optionally excluding data
 the data you're exporting. You can use Fractal's `parseExcludes` which accepts a string or an array:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($this->testBooks, new TestTransformer())
    ->parseExcludes(['characters', 'publisher'])
    ->toArray();
@@ -183,7 +185,7 @@ To improve readability you can also use a function named `exclude` followed by t
 of the include you want to... exclude:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($this->testBooks, new TestTransformer())
    ->excludeCharacters()
    ->excludePublisher()
@@ -196,7 +198,7 @@ Fractal has support for including meta data. You can use `addMeta` which accepts
 one or more arrays:
 
 ```php
-fractal()
+Fractal::create()
    ->collection($this->testBooks, function($book) { return ['name' => $book['name']];})
    ->addMeta(['key1' => 'value1'], ['key2' => 'value2'])
    ->toArray();
@@ -227,7 +229,7 @@ automatically generated and included in the result set:
 $paginator = Book::paginate(5);
 $books = $paginator->getCollection();
 
-fractal()
+Fractal::create()
     ->collection($books, new TestTransformer())
     ->serializeWith(new JsonApiSerializer())
     ->paginateWith(new IlluminatePaginatorAdapter($paginator))
@@ -246,7 +248,7 @@ $previousCursor = null;
 $count = count($books);
 $newCursor = $currentCursor + $count;
 
-fractal()
+Fractal::create()
   ->collection($books, new TestTransformer())
   ->serializeWith(new JsonApiSerializer())
   ->withCursor(new Cursor($currentCursor, $previousCursor, $newCursor, $count))
@@ -258,7 +260,7 @@ fractal()
 Certain serializers wrap the array output with a `data` element. The name of this element can be customized:
 
 ```php
-fractal()
+Fractal::create()
     ->collection($this->testBooks, new TestTransformer())
     ->serializeWith(new ArraySerializer())
     ->withResourceName('books')
@@ -266,7 +268,7 @@ fractal()
 ```
 
 ```php
-fractal()
+Fractal::create()
     ->item($this->testBooks[0], new TestTransformer(), 'book')
     ->serializeWith(new ArraySerializer())
     ->toArray();
@@ -279,11 +281,11 @@ You can also pass arguments to the `fractal`-function itself. The first argument
 Here are some examples
 
 ```php
-fractal($books, new BookTransformer())->toArray();
+Fractal::create($books, new BookTransformer())->toArray();
 
-fractal($books, new BookTransformer(), new ArraySerializer())->toArray();
+Fractal::create($books, new BookTransformer(), new ArraySerializer())->toArray();
 
-fractal(['item1', 'item2'], function ($item) {
+Fractal::create(['item1', 'item2'], function ($item) {
    return $item . '-transformed';
 })->toArray();
 ```

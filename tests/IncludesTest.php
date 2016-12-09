@@ -2,6 +2,8 @@
 
 namespace Spatie\Fractalistic\Test;
 
+use Spatie\Fractalistic\Fractal;
+
 class IncludesTest extends TestCase
 {
     /** @test */
@@ -23,12 +25,12 @@ class IncludesTest extends TestCase
     /** @test */
     public function it_provides_a_convenience_method_to_include_includes()
     {
-        $resultWithParseIncludes = fractal()
+        $resultWithParseIncludes = Fractal::create()
             ->collection($this->testBooks, new TestTransformer())
             ->parseIncludes('characters')
             ->toArray();
 
-        $resultWithParseCharacters = fractal()
+        $resultWithParseCharacters = Fractal::create()
             ->collection($this->testBooks, new TestTransformer())
             ->includeCharacters()
             ->toArray();

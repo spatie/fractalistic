@@ -27,12 +27,12 @@ class ExcludesTest extends TestCase
      */
     public function it_provides_a_convenience_method_to_exclude_excludes()
     {
-        $resultWithParseExcludes = fractal()
+        $resultWithParseExcludes = \Spatie\Fractalistic\Fractal::create()
             ->collection($this->testBooks, new TestTransformerWithIncludes())
             ->parseExcludes('publisher')
             ->toArray();
 
-        $resultWithParseExcludesAsaMethod = fractal()
+        $resultWithParseExcludesAsaMethod = \Spatie\Fractalistic\Fractal::create()
             ->collection($this->testBooks, new TestTransformerWithIncludes())
             ->excludePublisher()
             ->toArray();
