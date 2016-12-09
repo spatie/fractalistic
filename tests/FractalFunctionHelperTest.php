@@ -4,7 +4,6 @@ namespace Spatie\Fractalistic\Test;
 
 use Spatie\Fractalistic\Fractal;
 use Spatie\Fractalistic\ArraySerializer;
-use Spatie\Fractalistic\Exceptions\InvalidFractalHelperArgument;
 
 class FractalFunctionHelperTest extends TestCase
 {
@@ -12,14 +11,6 @@ class FractalFunctionHelperTest extends TestCase
     public function it_returns_an_instance_of_fractal_when_passing_no_arguments()
     {
         $this->assertInstanceOf(Fractal::class, Fractal::create());
-    }
-
-    /** @test */
-    public function it_throws_an_exception_when_passing_one_argument()
-    {
-        $this->expectException(InvalidFractalHelperArgument::class);
-
-        Fractal::create([]);
     }
 
     /** @test */
@@ -90,18 +81,5 @@ class FractalFunctionHelperTest extends TestCase
         ];
 
         $this->assertEquals($expectedArray, $transformedData);
-    }
-
-    /** @test */
-    public function it_will_thrown_an_exception_when_passing_too_many_arguments()
-    {
-        $this->expectException(InvalidFractalHelperArgument::class);
-
-        Fractal::create(
-            $this->testBooks,
-            new TestTransformer(),
-            new ArraySerializer(),
-            'extra argument'
-        )->toArray();
     }
 }
