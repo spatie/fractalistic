@@ -1,6 +1,6 @@
 {
     "name": "spatie/fractalistic",
-    "description": "Making working with Fractal a breeze",
+    "description": "A developer friendly wrapper around Fractal",
     "keywords": [
         "spatie",
         "fractalistic",
