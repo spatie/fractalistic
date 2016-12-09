@@ -9,6 +9,7 @@ use League\Fractal\Pagination\PaginatorInterface;
 use League\Fractal\Serializer\SerializerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidTransformation;
 use Spatie\Fractalistic\Exceptions\NoTransformerSpecified;
+use Traversable;
 
 class Fractal implements JsonSerializable
 {
@@ -52,11 +53,16 @@ class Fractal implements JsonSerializable
      *
      * @return \Spatie\Fractalistic\Fractal
      */
-    public static function create()
+    public static function create($data = null, $transformer = null, $serializer = null)
     {
-        $factory = new FractalFactory(func_get_args());
+        $instance = new static(new Manager());
 
-        return $factory->getFractalInstance();
+        $instance->data = $data ?: null;
+        $instance->dataType = $data ? $instance->determineDataType($data) : null;
+        $instance->transformer = $transformer ?: null;
+        $instance->serializer = $serializer ?: null;
+
+        return $instance;
     }
 
     /** @param \League\Fractal\Manager $manager */
@@ -117,6 +123,24 @@ class Fractal implements JsonSerializable
         }
 
         return $this;
+    }
+
+    /**
+     * @param mixed $data
+     *
+     * @return string
+     */
+    protected function determineDataType($data)
+    {
+        if (is_array($data)) {
+            return 'collection';
+        }
+
+        if ($data instanceof Traversable) {
+            return 'collection';
+        }
+
+        return 'item';
     }
 
     /**
