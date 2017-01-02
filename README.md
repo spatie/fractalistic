@@ -293,10 +293,6 @@ Fractal::create(['item1', 'item2'], function ($item) {
 })->toArray();
 ```
 
-## Quickly creating a transformer
-
-You can run the `make:transformer` command to quickly generate a dummy transformer. By default it will be stored in the `app\Transformers` directory.
-
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
