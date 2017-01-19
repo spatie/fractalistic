@@ -46,6 +46,9 @@ There's also a very short syntax available to quickly transform data:
 Fractal::create($books, new BookTransformer())->toArray();
 ```
 
+If you want to use this package inside Laravel, it's recommend to use [laravel-fractal](https://github.com/spatie/laravel-fractal) instead. That package contains a few more whistles and bells specifically targetted at Laravel users.
+
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all 
 our open source projects [on our website](https://spatie.be/opensource).
 
@@ -289,10 +292,6 @@ Fractal::create(['item1', 'item2'], function ($item) {
    return $item . '-transformed';
 })->toArray();
 ```
-
-## Quickly creating a transformer
-
-You can run the `make:transformer` command to quickly generate a dummy transformer. By default it will be stored in the `app\Transformers` directory.
 
 ## Change log
 
