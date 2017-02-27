@@ -121,7 +121,7 @@ Fractal::create()->item($books[0], new BookTransformer())->toArray();
 
 ## Using a serializer
 
-Let's take a look again a the output of the first example:
+Let's take a look again at the output of the first example:
 
 ```php
 ['data' => [['id' => 1], ['id' => 2]];
