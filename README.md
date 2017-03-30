@@ -58,13 +58,14 @@ You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it mak
 
 Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
 
-The best postcards will get published on the open source page on our website.
+The best postcards are published [on our website](https://spatie.be/en/opensource/postcards).
 
 ## Install
 
 You can pull in the package via composer:
+
 ``` bash
-$ composer require spatie/fractalistic
+composer require spatie/fractalistic
 ```
 
 ## Usage
