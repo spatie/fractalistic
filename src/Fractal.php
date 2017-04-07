@@ -418,7 +418,7 @@ class Fractal implements JsonSerializable
     * Locale Tr problem, change item to Item *
     */
 
-    private function mb_ucfirst($text){
-        return ucfirst($text);
+    private function mb_ucfirst($dataType){
+        return $dataType == 'item' ? 'Item' : ucfirst($dataType);
     }
 }

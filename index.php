@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-setlocale(LC_TIME, 'tr_TR.UTF-8');
+
+setlocale(LC_ALL, 'tr_TR.UTF-8');
 include 'vendor/autoload.php';
 use Spatie\Fractalistic\Fractal;
 use League\Fractal\Manager;
