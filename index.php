@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 setlocale(LC_ALL, 'tr_TR.UTF-8');
 include 'vendor/autoload.php';
 use Spatie\Fractalistic\Fractal;
