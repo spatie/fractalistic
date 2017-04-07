@@ -342,8 +342,8 @@ class Fractal implements JsonSerializable
      */
     public function getResource()
     {
-        $resourceClass = 'League\\Fractal\\Resource\\'.ucfirst($this->dataType);
-
+        $resourceClass = 'League\\Fractal\\Resource\\'.self::mb_ucfirst($this->dataType);
+    
         if (! class_exists($resourceClass)) {
             throw new InvalidTransformation();
         }
@@ -412,5 +412,13 @@ class Fractal implements JsonSerializable
         }
 
         return false;
+    }
+
+    /**
+    * Locale Tr problem, change item to Item *
+    */
+
+    private function mb_ucfirst($text){
+        return ucfirst($text);
     }
 }
