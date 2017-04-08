@@ -342,7 +342,7 @@ class Fractal implements JsonSerializable
      */
     public function getResource()
     {
-        $resourceClass = 'League\\Fractal\\Resource\\'.self::mb_ucfirst($this->dataType);
+        $resourceClass = 'League\\Fractal\\Resource\\'.ucfirst($this->dataType);
     
         if (! class_exists($resourceClass)) {
             throw new InvalidTransformation();
