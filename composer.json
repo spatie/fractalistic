@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": "^5.6|^7.0",
-        "league/fractal": "^0.14.0|^0.15.0"
+        "league/fractal": "^0.14.0|^0.15.0|^0.16.0"
     },
     "require-dev": {
         "illuminate/pagination": "^5.3",
