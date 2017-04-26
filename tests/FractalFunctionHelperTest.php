@@ -21,7 +21,7 @@ class FractalFunctionHelperTest extends TestCase
         })->toArray();
 
         $this->assertEquals([
-            'data' => [['item' => 'item1-transformed'], ['item' => ['item2-transformed'],
+            'data' => [['item' => 'item1-transformed'], ['item' => 'item2-transformed']],
         ], $transformedData);
     }
 
