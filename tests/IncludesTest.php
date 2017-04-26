@@ -48,8 +48,8 @@ class IncludesTest extends TestCase
             ->toArray();
 
         $expectedArray = ['data' => [
-            ['id' => 1, 'author' => 'Philip K Dick',  'characters' => ['data' => ['Death', 'Hex']], 'publisher' => ['data' => ['Elephant books']]],
-            ['id' => 2, 'author' => 'George R. R. Satan', 'characters' => ['data' => ['Ned Stark', 'Tywin Lannister']], 'publisher' => ['data' => ['Bloody Fantasy inc.']]],
+            ['id' => 1, 'author' => 'Philip K Dick',  'characters' => ['data' => [['name' => 'Death'],['name' =>  'Hex']]], 'publisher' => ['data' => ['Elephant books']]],
+            ['id' => 2, 'author' => 'George R. R. Satan', 'characters' => ['data' => [['name' => 'Ned Stark'], ['name' => 'Tywin Lannister']]], 'publisher' => ['data' => ['Bloody Fantasy inc.']]],
         ]];
 
         $this->assertEquals($expectedArray, $array);
@@ -65,11 +65,11 @@ class IncludesTest extends TestCase
 
         $expectedArray = ['data' => [
             ['id' => 1, 'author' => 'Philip K Dick',
-                'characters' => ['data' => ['Death', 'Hex']],
+                'characters' => ['data' => [['name' => 'Death'],['name' =>  'Hex']]],
                 'publisher' => ['data' => ['Elephant books']],
             ],
             ['id' => 2, 'author' => 'George R. R. Satan',
-                'characters' => ['data' => ['Ned Stark', 'Tywin Lannister']],
+                'characters' => ['data' => [['name' => 'Ned Stark'], ['name' => 'Tywin Lannister']]],
                 'publisher' => ['data' => ['Bloody Fantasy inc.']],
             ],
         ]];
