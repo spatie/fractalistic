@@ -1,6 +1,10 @@
 # Changelog
 
-All Notable changes to `fractalistic` will be documented in this file
+All notable changes to `fractalistic` will be documented in this file
+
+## 2.0.0 - 2016-04-26
+
+- added compatibility with fractal `0.16`
 
 ## 1.0.2 - 2016-01-17
 
