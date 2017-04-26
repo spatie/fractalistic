@@ -14,8 +14,8 @@ class ExcludesTest extends TestCase
 
         $expectedArray = [
             'data' => [
-                ['id' => 1, 'author' => 'Philip K Dick', 'title' => ['data' => ['Hogfather']], 'characters' => ['data' => ['Death', 'Hex']]],
-                ['id' => 2, 'author' => 'George R. R. Satan', 'title' => ['data' => ['Game Of Kill Everyone']], 'characters' => ['data' => ['Ned Stark', 'Tywin Lannister']]],
+                ['id' => 1, 'author' => 'Philip K Dick', 'title' => ['data' => ['Hogfather']], 'characters' => ['data' => [['name' => 'Death'], ['name' => 'Hex']]]],
+                ['id' => 2, 'author' => 'George R. R. Satan', 'title' => ['data' => ['Game Of Kill Everyone']], 'characters' => ['data' => [['name' => 'Ned Stark'], ['name' => 'Tywin Lannister']]]],
             ],
         ];
 
