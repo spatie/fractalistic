@@ -16,6 +16,9 @@ class Fractal implements JsonSerializable
     /** @var \League\Fractal\Manager */
     protected $manager;
 
+    /** @var int */
+    protected $recursionLimit = 10;
+
     /** @var \League\Fractal\Serializer\SerializerAbstract */
     protected $serializer;
 
@@ -285,6 +288,20 @@ class Fractal implements JsonSerializable
     }
 
     /**
+     * Upper limit to how many levels of included data are allowed.
+     *
+     * @param int $recursionLimit
+     *
+     * @return $this
+     */
+    public function limitRecursion(int $recursionLimit)
+    {
+        $this->recursionLimit = $recursionLimit;
+
+        return $this;
+    }
+
+    /**
      * Perform the transformation to json.
      *
      * @return string
@@ -329,6 +346,8 @@ class Fractal implements JsonSerializable
         if (! is_null($this->excludes)) {
             $this->manager->parseExcludes($this->excludes);
         }
+
+        $this->manager->setRecursionLimit($this->recursionLimit);
 
         return $this->manager->createData($this->getResource());
     }
