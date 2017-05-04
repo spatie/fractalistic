@@ -277,6 +277,19 @@ Fractal::create()
     ->toArray();
 ```
 
+## Limit recursion
+
+ To increase or decrease the level of embedded includes you can use `limitRecursion`. 
+ 
+ ```php
+ Fractal::create()
+     ->collection($this->testBooks, new TestTransformer())
+     ->includesDataThatHasALotOfRecursion
+     ->limitRecursion(5);
+ ```
+
+If you do not call `limitRecursion` a default value of 10 is used.
+
 ## Quickly transform data with the short function syntax
 
 You can also pass arguments to the `fractal`-function itself. The first arguments should be the data you which to transform. The second one should be a transformer or a `closure` that will be used to transform the data. The third one should be a serializer.
