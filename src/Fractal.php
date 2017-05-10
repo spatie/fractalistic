@@ -338,7 +338,7 @@ class Fractal implements JsonSerializable
         if (! is_null($this->serializer)) {
             $this->manager->setSerializer($this->serializer);
         }
-        
+
         $this->manager->setRecursionLimit($this->recursionLimit);
 
         if (! is_null($this->includes)) {
