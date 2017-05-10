@@ -338,6 +338,8 @@ class Fractal implements JsonSerializable
         if (! is_null($this->serializer)) {
             $this->manager->setSerializer($this->serializer);
         }
+        
+        $this->manager->setRecursionLimit($this->recursionLimit);
 
         if (! is_null($this->includes)) {
             $this->manager->parseIncludes($this->includes);
@@ -346,8 +348,6 @@ class Fractal implements JsonSerializable
         if (! is_null($this->excludes)) {
             $this->manager->parseExcludes($this->excludes);
         }
-
-        $this->manager->setRecursionLimit($this->recursionLimit);
 
         return $this->manager->createData($this->getResource());
     }
