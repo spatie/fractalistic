@@ -249,11 +249,11 @@ class Fractal implements JsonSerializable
      * @return $this
      */
     public function parseFieldsets($fieldsets)
-		{
+    {
         foreach ($fieldsets as $key => $fields) {
-          if (is_array($fields)) {
-            $fieldsets[$key] = implode(',', $fields);
-          }
+            if (is_array($fields)) {
+                $fieldsets[$key] = implode(',', $fields);
+            }
         }
 
         $this->fieldsets = array_merge($this->fieldsets, $fieldsets);

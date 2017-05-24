@@ -16,7 +16,7 @@ class SparseFieldsetsTest extends TestCase
             'b' => 'B',
             'c' => 'C',
           ], function ($item) {
-            return $item;
+              return $item;
           }, new ArraySerializer())
           ->withResourceName('test')
           ->parseFieldsets(['test' => 'a,c'])
