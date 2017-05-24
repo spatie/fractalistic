@@ -248,16 +248,17 @@ class Fractal implements JsonSerializable
      *
      * @return $this
      */
-    public function parseFieldsets($fieldsets){
-      foreach ($fieldsets as $key => $fields) {
-        if (is_array($fields)) {
-          $fieldsets[$key] = implode(',', $fields);
+    public function parseFieldsets($fieldsets)
+		{
+        foreach ($fieldsets as $key => $fields) {
+          if (is_array($fields)) {
+            $fieldsets[$key] = implode(',', $fields);
+          }
         }
-      }
 
-      $this->fieldsets = array_merge($this->fieldsets, $fieldsets);
+        $this->fieldsets = array_merge($this->fieldsets, $fieldsets);
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -365,15 +366,15 @@ class Fractal implements JsonSerializable
         $this->manager->setRecursionLimit($this->recursionLimit);
 
         if ((bool) $this->includes) {
-          $this->manager->parseIncludes($this->includes);
+            $this->manager->parseIncludes($this->includes);
         }
 
         if ((bool) $this->excludes) {
-          $this->manager->parseExcludes($this->excludes);
+            $this->manager->parseExcludes($this->excludes);
         }
 
         if ((bool) $this->fieldsets) {
-          $this->manager->parseFieldsets($this->fieldsets);
+            $this->manager->parseFieldsets($this->fieldsets);
         }
 
         return $this->manager->createData($this->getResource());

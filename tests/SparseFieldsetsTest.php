@@ -7,28 +7,28 @@ use Spatie\Fractalistic\ArraySerializer;
 
 class SparseFieldsetsTest extends TestCase
 {
-  /** @test */
-  public function it_can_filter_out_fields()
-  {
-    $array = Fractal::create()
-      ->item([
-        'a' => 'A',
-        'b' => 'B',
-        'c' => 'C',
-      ], function ($item) {
-        return $item;
-      }, new ArraySerializer())
-      ->withResourceName('test')
-      ->parseFieldsets(['test' => 'a,c'])
-      ->toArray();
+    /** @test */
+    public function it_can_filter_out_fields()
+    {
+        $array = Fractal::create()
+            ->item([
+            'a' => 'A',
+            'b' => 'B',
+            'c' => 'C',
+          ], function ($item) {
+            return $item;
+          }, new ArraySerializer())
+          ->withResourceName('test')
+          ->parseFieldsets(['test' => 'a,c'])
+          ->toArray();
 
-    $expectedArray = [
-      'data' => [
-        'a' => 'A',
-        'c' => 'C',
-      ],
-    ];
+        $expectedArray = [
+          'data' => [
+            'a' => 'A',
+            'c' => 'C',
+          ],
+        ];
 
-    $this->assertEquals($expectedArray, $array);
-  }
+        $this->assertEquals($expectedArray, $array);
+    }
 }
