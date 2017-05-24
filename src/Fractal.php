@@ -243,12 +243,12 @@ class Fractal implements JsonSerializable
     /**
      * Specify the fieldsets to include in the response.
      *
-     * @param array|string $fieldsets array with key = resourceName and value = fields to include
+     * @param array $fieldsets array with key = resourceName and value = fields to include
      *                                (array or comma separated string with field names)
      *
      * @return $this
      */
-    public function parseFieldsets($fieldsets)
+    public function parseFieldsets(array $fieldsets)
     {
         foreach ($fieldsets as $key => $fields) {
             if (is_array($fields)) {
