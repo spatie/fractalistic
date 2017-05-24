@@ -37,6 +37,9 @@ class Fractal implements JsonSerializable
     /** @var array */
     protected $excludes = [];
 
+    /** @var array */
+    protected $fieldsets = [];
+
     /** @var string */
     protected $dataType;
 
@@ -238,6 +241,31 @@ class Fractal implements JsonSerializable
     }
 
     /**
+     * Specify the fieldsets to include in the response.
+     *
+     * @param array|string $fieldsets array with key = resourceName (use NULL or empty
+     *                                string if you're not using a resource name) and value = fields to include
+     *                                (array or comma separated string with field names)
+     *                                A string of field names can be used as a shortcut for ['' => $fields]
+     *
+     * @return $this
+     */
+    public function parseFieldsets($fieldsets){
+      if (is_string($fieldsets)) {
+        $fieldsets = ['' => $fieldsets];
+      }
+      foreach ($fieldsets as $key => $fields) {
+        if (is_array($fields)) {
+          $fieldsets[$key] = implode(',', $fields);
+        }
+      }
+
+      $this->fieldsets = array_merge($this->fieldsets, $fieldsets);
+
+      return $this;
+    }
+
+    /**
      * Normalize the includes an excludes.
      *
      * @param array|string $includesOrExcludes
@@ -341,12 +369,16 @@ class Fractal implements JsonSerializable
 
         $this->manager->setRecursionLimit($this->recursionLimit);
 
-        if (! is_null($this->includes)) {
-            $this->manager->parseIncludes($this->includes);
+        if ((bool) $this->includes) {
+          $this->manager->parseIncludes($this->includes);
         }
 
-        if (! is_null($this->excludes)) {
-            $this->manager->parseExcludes($this->excludes);
+        if ((bool) $this->excludes) {
+          $this->manager->parseExcludes($this->excludes);
+        }
+
+        if ((bool) $this->fieldsets) {
+          $this->manager->parseFieldsets($this->fieldsets);
         }
 
         return $this->manager->createData($this->getResource());
