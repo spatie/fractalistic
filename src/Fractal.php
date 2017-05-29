@@ -365,15 +365,15 @@ class Fractal implements JsonSerializable
 
         $this->manager->setRecursionLimit($this->recursionLimit);
 
-        if ((bool) $this->includes) {
+        if (! empty($this->includes)) {
             $this->manager->parseIncludes($this->includes);
         }
 
-        if ((bool) $this->excludes) {
+        if (! empty($this->excludes)) {
             $this->manager->parseExcludes($this->excludes);
         }
 
-        if ((bool) $this->fieldsets) {
+        if (! empty($this->fieldsets)) {
             $this->manager->parseFieldsets($this->fieldsets);
         }
 

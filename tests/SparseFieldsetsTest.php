@@ -12,20 +12,20 @@ class SparseFieldsetsTest extends TestCase
     {
         $array = Fractal::create()
             ->item([
-            'a' => 'A',
-            'b' => 'B',
-            'c' => 'C',
+            'key1' => 'value1',
+            'key2' => 'value2',
+            'key3' => 'value3',
           ], function ($item) {
               return $item;
           }, new ArraySerializer())
           ->withResourceName('test')
-          ->parseFieldsets(['test' => 'a,c'])
+          ->parseFieldsets(['test' => 'key1,key3'])
           ->toArray();
 
         $expectedArray = [
           'data' => [
-            'a' => 'A',
-            'c' => 'C',
+            'key1' => 'value1',
+            'key3' => 'value3',
           ],
         ];
 
