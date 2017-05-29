@@ -37,6 +37,9 @@ class Fractal implements JsonSerializable
     /** @var array */
     protected $excludes = [];
 
+    /** @var array */
+    protected $fieldsets = [];
+
     /** @var string */
     protected $dataType;
 
@@ -238,6 +241,27 @@ class Fractal implements JsonSerializable
     }
 
     /**
+     * Specify the fieldsets to include in the response.
+     *
+     * @param array $fieldsets array with key = resourceName and value = fields to include
+     *                                (array or comma separated string with field names)
+     *
+     * @return $this
+     */
+    public function parseFieldsets(array $fieldsets)
+    {
+        foreach ($fieldsets as $key => $fields) {
+            if (is_array($fields)) {
+                $fieldsets[$key] = implode(',', $fields);
+            }
+        }
+
+        $this->fieldsets = array_merge($this->fieldsets, $fieldsets);
+
+        return $this;
+    }
+
+    /**
      * Normalize the includes an excludes.
      *
      * @param array|string $includesOrExcludes
@@ -341,12 +365,16 @@ class Fractal implements JsonSerializable
 
         $this->manager->setRecursionLimit($this->recursionLimit);
 
-        if (! is_null($this->includes)) {
+        if (! empty($this->includes)) {
             $this->manager->parseIncludes($this->includes);
         }
 
-        if (! is_null($this->excludes)) {
+        if (! empty($this->excludes)) {
             $this->manager->parseExcludes($this->excludes);
+        }
+
+        if (! empty($this->fieldsets)) {
+            $this->manager->parseFieldsets($this->fieldsets);
         }
 
         return $this->manager->createData($this->getResource());
