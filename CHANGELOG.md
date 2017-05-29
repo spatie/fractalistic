@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.2.0 - 2017-05-29
+
+- add sparse fieldset support
+
 ## 2.1.1 - 2017-05-10
 
 - fix for bug where recursion limit would not be used
