@@ -138,6 +138,10 @@ class Fractal implements JsonSerializable
      */
     protected function determineDataType($data)
     {
+        if (is_null($data)) {
+            return 'NullResource';
+        }
+        
         if (is_array($data)) {
             return 'collection';
         }
