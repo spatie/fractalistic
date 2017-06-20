@@ -141,7 +141,7 @@ class Fractal implements JsonSerializable
         if (is_null($data)) {
             return 'NullResource';
         }
-        
+
         if (is_array($data)) {
             return 'collection';
         }
