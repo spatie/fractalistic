@@ -142,7 +142,7 @@ class FractalTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_nul_fractal_data()
+    public function it_can_create_null_fractal_data()
     {
         $resource = Fractal::create(null, NullableTransformer::class)
             ->serializeWith(new JsonApiSerializer())
