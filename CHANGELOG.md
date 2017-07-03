@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.3.0 - 2017-07-03
+
+- add support for `NullResource`
+
 ## 2.2.0 - 2017-05-29
 
 - add sparse fieldset support
