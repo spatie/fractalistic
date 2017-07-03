@@ -64,7 +64,7 @@ class Fractal implements JsonSerializable
         $instance = new static(new Manager());
 
         $instance->data = $data ?: null;
-        $instance->dataType = $data ? $instance->determineDataType($data) : null;
+        $instance->dataType = $instance->determineDataType($data);
         $instance->transformer = $transformer ?: null;
         $instance->serializer = $serializer ?: null;
 
@@ -138,6 +138,10 @@ class Fractal implements JsonSerializable
      */
     protected function determineDataType($data)
     {
+        if (is_null($data)) {
+            return 'NullResource';
+        }
+
         if (is_array($data)) {
             return 'collection';
         }

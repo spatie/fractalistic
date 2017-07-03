@@ -3,7 +3,9 @@
 namespace Spatie\Fractalistic\Test;
 
 use League\Fractal\Pagination\Cursor;
+use League\Fractal\Serializer\JsonApiSerializer;
 use Spatie\Fractalistic\ArraySerializer;
+use Spatie\Fractalistic\Fractal;
 
 class FractalTest extends TestCase
 {
@@ -110,6 +112,41 @@ class FractalTest extends TestCase
     {
         $resource = $this->fractal
             ->collection($this->testBooks, new TestTransformer())
+            ->createData();
+
+        $this->assertInstanceOf(\League\Fractal\Scope::class, $resource);
+    }
+
+    /** @test */
+    public function it_can_perform_a_null_item()
+    {
+        $array = Fractal::create(null, NullableTransformer::class)
+            ->serializeWith(new JsonApiSerializer())
+            ->withResourceName('books')
+            ->toArray();
+
+        $expectedArray = ['data' => null];
+
+        $this->assertEquals($expectedArray, $array);
+    }
+
+    /** @test */
+    public function it_can_create_a_null_resource()
+    {
+        $resource = Fractal::create(null, NullableTransformer::class)
+            ->serializeWith(new JsonApiSerializer())
+            ->withResourceName('books')
+            ->getResource();
+
+        $this->assertInstanceOf(\League\Fractal\Resource\ResourceInterface::class, $resource);
+    }
+
+    /** @test */
+    public function it_can_create_nul_fractal_data()
+    {
+        $resource = Fractal::create(null, NullableTransformer::class)
+            ->serializeWith(new JsonApiSerializer())
+            ->withResourceName('books')
             ->createData();
 
         $this->assertInstanceOf(\League\Fractal\Scope::class, $resource);
