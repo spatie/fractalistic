@@ -168,4 +168,15 @@ class FractalTest extends TestCase
             $this->createMock('League\Fractal\Pagination\PaginatorInterface')
         ));
     }
+
+    /** @test */
+    public function it_can_perform_an_empty_array()
+    {
+        $array = Fractal::create([], TestTransformer::class)
+            ->toArray();
+
+        $expectedArray = ['data' => []];
+
+        $this->assertEquals($expectedArray, $array);
+    }
 }
