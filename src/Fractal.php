@@ -63,7 +63,7 @@ class Fractal implements JsonSerializable
     {
         $instance = new static(new Manager());
 
-        $instance->data = $data ?: null;
+        $instance->data = $data;
         $instance->dataType = $instance->determineDataType($data);
         $instance->transformer = $transformer ?: null;
         $instance->serializer = $serializer ?: null;
