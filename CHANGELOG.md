@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.3.1 - 2017-07-22
+
+- fix bug when passing empty arrays to collections
+
 ## 2.3.0 - 2017-07-03
 
 - add support for `NullResource`
