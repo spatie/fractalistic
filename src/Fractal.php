@@ -88,7 +88,9 @@ class Fractal implements JsonSerializable
      */
     public function collection($data, $transformer = null, $resourceName = null)
     {
-        $this->resourceName = $resourceName;
+        if (! is_null($resourceName)) {
+            $this->resourceName = $resourceName;
+        }
 
         return $this->data('collection', $data, $transformer);
     }
@@ -104,7 +106,9 @@ class Fractal implements JsonSerializable
      */
     public function item($data, $transformer = null, $resourceName = null)
     {
-        $this->resourceName = $resourceName;
+        if (! is_null($resourceName)) {
+            $this->resourceName = $resourceName;
+        }
 
         return $this->data('item', $data, $transformer);
     }
