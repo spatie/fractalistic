@@ -18,6 +18,12 @@ class FractalTest extends TestCase
 
         $expectedJson = '{"data":[{"id":1,"author":"Philip K Dick"},{"id":2,"author":"George R. R. Satan"}]}';
 
+        $this->assertEquals($expectedJson, $json);
+    }
+
+    /** @test */
+    public function it_can_accept_a_bitmask_when_converting_to_json()
+    {
         $json = $this->fractal
             ->collection($this->testBooks, new TestTransformer())
             ->toJson(JSON_PRETTY_PRINT);
