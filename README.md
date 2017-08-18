@@ -102,7 +102,16 @@ Fractal::create()
    ->toArray();
 ```
 
-To make your code a bit shorter you could also pass the transform closure or class as a 
+You can also pass the classname of the Transformer:
+
+```php
+Fractal::create()
+   ->collection($books)
+   ->transformWith(BookTransformer::class)
+   ->toArray();
+```
+
+To make your code a bit shorter you could also pass the transform closure, class, or classname as a 
 second parameter of the `collection`-method:
 
 ```php
@@ -143,6 +152,17 @@ Fractal::create()
 
 //returns [['id' => 1], ['id' => 2]]
 ```
+
+You can also pass the serializer classname instead of an instantiation:
+
+```php
+Fractal::create()
+   ->collection($books)
+   ->transformWith(BookTransformer::class)
+   ->serializeWith(MySerializer::class)
+   ->toArray();
+```
+
 
 ### Changing the default serializer
 
@@ -300,6 +320,8 @@ Here are some examples
 Fractal::create($books, new BookTransformer())->toArray();
 
 Fractal::create($books, new BookTransformer(), new ArraySerializer())->toArray();
+
+Fractal::create($books, BookTransformer::class, ArraySerializer::class)->toArray();
 
 Fractal::create(['item1', 'item2'], function ($item) {
    return $item . '-transformed';
