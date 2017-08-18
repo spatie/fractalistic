@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.4.0 - 2017-08-19
+
+- allow classnames for transformer and serializers
+
 ## 2.3.2 - 2017-07-24
 
 - fix ability to define collection & item after resource name
