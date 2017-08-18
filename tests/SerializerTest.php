@@ -34,4 +34,17 @@ class SerializerTest extends TestCase
 
         $this->assertEquals($expectedArray, $array);
     }
+
+    /** @test */
+    public function it_accepts_a_class_name_for_the_serializer()
+    {
+        $array = $this->fractal
+            ->item($this->testBooks[0], new TestTransformer())
+            ->serializeWith(ArraySerializer::class)
+            ->toArray();
+
+        $expectedArray = ['id' => 1, 'author' => 'Philip K Dick'];
+
+        $this->assertEquals($expectedArray, $array);
+    }
 }

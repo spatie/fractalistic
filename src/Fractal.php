@@ -7,7 +7,6 @@ use JsonSerializable;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface;
 use League\Fractal\Pagination\PaginatorInterface;
-use League\Fractal\Serializer\SerializerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidTransformation;
 use Spatie\Fractalistic\Exceptions\NoTransformerSpecified;
 
@@ -19,10 +18,10 @@ class Fractal implements JsonSerializable
     /** @var int */
     protected $recursionLimit = 10;
 
-    /** @var \League\Fractal\Serializer\SerializerAbstract */
+    /** @var string|\League\Fractal\Serializer\SerializerAbstract */
     protected $serializer;
 
-    /** @var \League\Fractal\TransformerAbstract|callable */
+    /** @var string|callable|\League\Fractal\TransformerAbstract */
     protected $transformer;
 
     /** @var \League\Fractal\Pagination\PaginatorInterface */
@@ -54,8 +53,8 @@ class Fractal implements JsonSerializable
 
     /**
      * @param null|mixed $data
-     * @param null|callable|\League\Fractal\TransformerAbstract $transformer
-     * @param null|\League\Fractal\Serializer\SerializerAbstract $serializer
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string|\League\Fractal\Serializer\SerializerAbstract $serializer
      *
      * @return \Spatie\Fractalistic\Fractal
      */
@@ -80,9 +79,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the collection data that must be transformed.
      *
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
-     * @param string|null                                       $resourceName
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string $resourceName
      *
      * @return $this
      */
@@ -98,9 +97,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the item data that must be transformed.
      *
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
-     * @param string|null                                       $resourceName
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string $resourceName
      *
      * @return $this
      */
@@ -116,9 +115,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the data that must be transformed.
      *
-     * @param string                                            $dataType
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
+     * @param string $dataType
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
      *
      * @return $this
      */
@@ -160,16 +159,12 @@ class Fractal implements JsonSerializable
     /**
      * Set the class or function that will perform the transform.
      *
-     * @param \League\Fractal\TransformerAbstract|callable $transformer
+     * @param string|callable|\League\Fractal\TransformerAbstract $transformer
      *
      * @return $this
      */
     public function transformWith($transformer)
     {
-        if (is_string($transformer) && class_exists($transformer)) {
-            $transformer = new $transformer;
-        }
-
         $this->transformer = $transformer;
 
         return $this;
@@ -178,11 +173,11 @@ class Fractal implements JsonSerializable
     /**
      * Set the serializer to be used.
      *
-     * @param \League\Fractal\Serializer\SerializerAbstract $serializer
+     * @param string|\League\Fractal\Serializer\SerializerAbstract $serializer
      *
      * @return $this
      */
-    public function serializeWith(SerializerAbstract $serializer)
+    public function serializeWith($serializer)
     {
         $this->serializer = $serializer;
 
@@ -237,6 +232,7 @@ class Fractal implements JsonSerializable
      * Specify the excludes.
      *
      * @param array|string $excludes Array or string of resources to exclude.
+     *
      * @return $this
      */
     public function parseExcludes($excludes)
@@ -367,6 +363,10 @@ class Fractal implements JsonSerializable
             throw new NoTransformerSpecified();
         }
 
+        if (is_string($this->serializer)) {
+            $this->serializer = new $this->serializer;
+        }
+
         if (! is_null($this->serializer)) {
             $this->manager->setSerializer($this->serializer);
         }
@@ -403,6 +403,10 @@ class Fractal implements JsonSerializable
             throw new InvalidTransformation();
         }
 
+        if (is_string($this->transformer)) {
+            $this->transformer = new $this->transformer;
+        }
+
         $resource = new $resourceClass($this->data, $this->transformer, $this->resourceName);
 
         $resource->setMeta($this->meta);
@@ -430,7 +434,7 @@ class Fractal implements JsonSerializable
      * Support for magic methods to included data.
      *
      * @param string $name
-     * @param array  $arguments
+     * @param array $arguments
      *
      * @return $this
      */
@@ -454,8 +458,9 @@ class Fractal implements JsonSerializable
     /**
      * Determine if a given string starts with a given substring.
      *
-     * @param  string  $haystack
-     * @param  string|array  $needles
+     * @param  string $haystack
+     * @param  string|array $needles
+     *
      * @return bool
      */
     protected function startsWith($haystack, $needles)
