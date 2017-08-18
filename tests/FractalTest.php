@@ -18,6 +18,25 @@ class FractalTest extends TestCase
 
         $expectedJson = '{"data":[{"id":1,"author":"Philip K Dick"},{"id":2,"author":"George R. R. Satan"}]}';
 
+        $json = $this->fractal
+            ->collection($this->testBooks, new TestTransformer())
+            ->toJson(JSON_PRETTY_PRINT);
+
+        $expectedJson = <<<'JSON'
+{
+    "data": [
+        {
+            "id": 1,
+            "author": "Philip K Dick"
+        },
+        {
+            "id": 2,
+            "author": "George R. R. Satan"
+        }
+    ]
+}
+JSON;
+
         $this->assertEquals($expectedJson, $json);
     }
 
