@@ -336,11 +336,13 @@ class Fractal implements JsonSerializable
     /**
      * Perform the transformation to json.
      *
+     * @param int $options
+     *
      * @return string
      */
-    public function toJson()
+    public function toJson($options = 0)
     {
-        return $this->createData()->toJson();
+        return $this->createData()->toJson($options);
     }
 
     /**
