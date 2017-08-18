@@ -40,8 +40,6 @@ JSON;
         $this->assertEquals($expectedJson, $json);
     }
 
-
-
     /** @test */
     public function it_can_transform_multiple_items_using_a_transformer_to_an_array()
     {
