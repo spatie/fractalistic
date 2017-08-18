@@ -22,7 +22,7 @@ class Fractal implements JsonSerializable
     /** @var \League\Fractal\Serializer\SerializerAbstract */
     protected $serializer;
 
-    /** @var \League\Fractal\TransformerAbstract|callable */
+    /** @var string|callable|\League\Fractal\TransformerAbstract */
     protected $transformer;
 
     /** @var \League\Fractal\Pagination\PaginatorInterface */
@@ -54,7 +54,7 @@ class Fractal implements JsonSerializable
 
     /**
      * @param null|mixed $data
-     * @param null|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
      * @param null|\League\Fractal\Serializer\SerializerAbstract $serializer
      *
      * @return \Spatie\Fractalistic\Fractal
@@ -80,9 +80,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the collection data that must be transformed.
      *
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
-     * @param string|null                                       $resourceName
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string $resourceName
      *
      * @return $this
      */
@@ -98,9 +98,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the item data that must be transformed.
      *
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
-     * @param string|null                                       $resourceName
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string $resourceName
      *
      * @return $this
      */
@@ -116,9 +116,9 @@ class Fractal implements JsonSerializable
     /**
      * Set the data that must be transformed.
      *
-     * @param string                                            $dataType
-     * @param mixed                                             $data
-     * @param \League\Fractal\TransformerAbstract|callable|null $transformer
+     * @param string $dataType
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
      *
      * @return $this
      */
@@ -160,16 +160,12 @@ class Fractal implements JsonSerializable
     /**
      * Set the class or function that will perform the transform.
      *
-     * @param \League\Fractal\TransformerAbstract|callable $transformer
+     * @param string|callable|\League\Fractal\TransformerAbstract $transformer
      *
      * @return $this
      */
     public function transformWith($transformer)
     {
-        if (is_string($transformer) && class_exists($transformer)) {
-            $transformer = new $transformer;
-        }
-
         $this->transformer = $transformer;
 
         return $this;
@@ -365,6 +361,9 @@ class Fractal implements JsonSerializable
     {
         if (is_null($this->transformer)) {
             throw new NoTransformerSpecified();
+        }
+        if (is_string($this->transformer)) {
+            $this->transformer = new $this->transformer;
         }
 
         if (! is_null($this->serializer)) {

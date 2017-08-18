@@ -53,6 +53,18 @@ class FractalTest extends TestCase
     }
 
     /** @test */
+    public function it_can_transform_a_collection_using_a_class_name()
+    {
+        $json = $this->fractal
+            ->collection($this->testBooks, TestTransformer::class)
+            ->toJson();
+
+        $expectedJson = '{"data":[{"id":1,"author":"Philip K Dick"},{"id":2,"author":"George R. R. Satan"}]}';
+
+        $this->assertEquals($expectedJson, $json);
+    }
+
+    /** @test */
     public function it_provides_a_method_to_specify_the_transformer()
     {
         $array = $this->fractal
