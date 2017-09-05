@@ -194,6 +194,7 @@ JSON;
     {
         $this->assertInstanceOf(get_class($this->fractal), $this->fractal->item('test'));
         $this->assertInstanceOf(get_class($this->fractal), $this->fractal->collection([]));
+        $this->assertInstanceOf(get_class($this->fractal), $this->fractal->primitive(123));
         $this->assertInstanceOf(get_class($this->fractal), $this->fractal->transformWith(function () {
         }));
         $this->assertInstanceOf(get_class($this->fractal), $this->fractal->serializeWith(new ArraySerializer()));
@@ -234,6 +235,17 @@ JSON;
         $resource = Fractal::create()
             ->withResourceName('tests')
             ->item($this->testBooks[0])
+            ->transformWith(new TestTransformer);
+
+        $this->assertEquals('tests', $resource->getResource()->getResourceKey());
+    }
+
+    /** @test */
+    public function it_can_define_primitive_after_resource_name()
+    {
+        $resource = Fractal::create()
+            ->withResourceName('tests')
+            ->primitive($this->testBooks[0])
             ->transformWith(new TestTransformer);
 
         $this->assertEquals('tests', $resource->getResource()->getResourceKey());

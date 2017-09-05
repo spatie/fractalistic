@@ -113,6 +113,24 @@ class Fractal implements JsonSerializable
     }
 
     /**
+     * Set the primitive data that must be transformed.
+     *
+     * @param mixed $data
+     * @param null|string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param null|string $resourceName
+     *
+     * @return $this
+     */
+    public function primitive($data, $transformer = null, $resourceName = null)
+    {
+        if (! is_null($resourceName)) {
+            $this->resourceName = $resourceName;
+        }
+
+        return $this->data('primitive', $data, $transformer);
+    }
+
+    /**
      * Set the data that must be transformed.
      *
      * @param string $dataType
