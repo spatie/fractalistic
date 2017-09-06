@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.6.0 - 2017-09-06
+
+- add `primitive` method
+
 ## 2.5.0 - 2017-08-19
 
 - add support for Fractal 0.17
