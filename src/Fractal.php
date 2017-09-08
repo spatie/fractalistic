@@ -442,7 +442,6 @@ class Fractal implements JsonSerializable
         return $resource;
     }
 
-    
     /**
      * Return the name of the resource.
      *
@@ -452,7 +451,7 @@ class Fractal implements JsonSerializable
     {
         return $this->resourceName;
     }
-    
+
     /**
      * Convert the object into something JSON serializable.
      */
