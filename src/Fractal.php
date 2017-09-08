@@ -442,6 +442,17 @@ class Fractal implements JsonSerializable
         return $resource;
     }
 
+    
+    /**
+     * Return the resourceName.
+     *
+     * @return  string
+     */
+    public function getResourceName()
+    {
+        return $this->resourceName;
+    }
+    
     /**
      * Convert the object into something JSON serializable.
      */
