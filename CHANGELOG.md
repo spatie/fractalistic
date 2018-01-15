@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.7.1 - 2018-01-15
+
+- remove PHP 5.6 from composer.json
+
 ## 2.7.0 - 2017-09-06
 
 - add `getResourceName`
