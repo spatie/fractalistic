@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.7.2 - 2018-10-08
+
+- set the scope indentifier when creating the scope (see #39)
+
 ## 2.7.1 - 2018-01-15
 
 - remove PHP 5.6 from composer.json
