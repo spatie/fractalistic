@@ -405,7 +405,7 @@ class Fractal implements JsonSerializable
             $this->manager->parseFieldsets($this->fieldsets);
         }
 
-        return $this->manager->createData($this->getResource());
+        return $this->manager->createData($this->getResource(), $this->resourceName);
     }
 
     /**
