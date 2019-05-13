@@ -2,6 +2,11 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.8.0 - 2018-05-13
+
+- add support for Fractal 0.18
+- drop support for Fractal 0.17
+
 ## 2.7.2 - 2018-10-08
 
 - set the scope indentifier when creating the scope (see #39)
