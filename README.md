@@ -309,13 +309,13 @@ You can also pass arguments to the `fractal`-function itself. The first argument
 Here are some examples
 
 ```php
-Fractal::create($books, new BookTransformer())->toArray();
+fractal($books, new BookTransformer())->toArray();
 
-Fractal::create($books, new BookTransformer(), new ArraySerializer())->toArray();
+fractal($books, new BookTransformer(), new ArraySerializer())->toArray();
 
-Fractal::create($books, BookTransformer::class, ArraySerializer::class)->toArray();
+fractal($books, BookTransformer::class, ArraySerializer::class)->toArray();
 
-Fractal::create(['item1', 'item2'], function ($item) {
+fractal(['item1', 'item2'], function ($item) {
    return $item . '-transformed';
 })->toArray();
 ```
