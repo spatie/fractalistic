@@ -2,8 +2,8 @@
 
 namespace Spatie\Fractalistic\Test;
 
-use Spatie\Fractalistic\Fractal;
 use Spatie\Fractalistic\ArraySerializer;
+use Spatie\Fractalistic\Fractal;
 
 class FractalFunctionHelperTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Spatie\Fractalistic\Test;
 
-use Spatie\Fractalistic\Fractal;
 use Spatie\Fractalistic\ArraySerializer;
+use Spatie\Fractalistic\Fractal;
 
 class SparseFieldsetsTest extends TestCase
 {
@@ -12,10 +12,10 @@ class SparseFieldsetsTest extends TestCase
     {
         $array = Fractal::create()
             ->item([
-            'key1' => 'value1',
-            'key2' => 'value2',
-            'key3' => 'value3',
-          ], function ($item) {
+                'key1' => 'value1',
+                'key2' => 'value2',
+                'key3' => 'value3',
+            ], function ($item) {
               return $item;
           }, new ArraySerializer())
           ->withResourceName('test')
@@ -23,10 +23,10 @@ class SparseFieldsetsTest extends TestCase
           ->toArray();
 
         $expectedArray = [
-          'data' => [
-            'key1' => 'value1',
-            'key3' => 'value3',
-          ],
+            'data' => [
+                'key1' => 'value1',
+                'key3' => 'value3',
+            ],
         ];
 
         $this->assertEquals($expectedArray, $array);
