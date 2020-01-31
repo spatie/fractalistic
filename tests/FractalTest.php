@@ -2,10 +2,10 @@
 
 namespace Spatie\Fractalistic\Test;
 
-use Spatie\Fractalistic\Fractal;
 use League\Fractal\Pagination\Cursor;
-use Spatie\Fractalistic\ArraySerializer;
 use League\Fractal\Serializer\JsonApiSerializer;
+use Spatie\Fractalistic\ArraySerializer;
+use Spatie\Fractalistic\Fractal;
 
 class FractalTest extends TestCase
 {
