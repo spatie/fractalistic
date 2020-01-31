@@ -3,8 +3,8 @@
 namespace Spatie\Fractalistic\Test;
 
 use Illuminate\Pagination\LengthAwarePaginator;
-use League\Fractal\Serializer\JsonApiSerializer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use League\Fractal\Serializer\JsonApiSerializer;
 
 class PaginatorTest extends TestCase
 {

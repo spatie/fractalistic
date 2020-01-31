@@ -2,8 +2,8 @@
 
 namespace Spatie\Fractalistic\Test;
 
-use Spatie\Fractalistic\Fractal;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+use Spatie\Fractalistic\Fractal;
 
 abstract class TestCase extends PHPUnitTestCase
 {
