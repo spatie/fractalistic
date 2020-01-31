@@ -2,7 +2,7 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
-## 2.8.0 - 2020-01-31
+## 2.9.0 - 2020-01-31
 
 - add support for Fractal 0.18
 - drop support for Fractal 0.17
