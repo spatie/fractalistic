@@ -224,7 +224,7 @@ JSON;
         $resource = Fractal::create()
             ->withResourceName('tests')
             ->collection($this->testBooks)
-            ->transformWith(new TestTransformer);
+            ->transformWith(new TestTransformer());
 
         $this->assertEquals('tests', $resource->getResource()->getResourceKey());
     }
@@ -235,7 +235,7 @@ JSON;
         $resource = Fractal::create()
             ->withResourceName('tests')
             ->item($this->testBooks[0])
-            ->transformWith(new TestTransformer);
+            ->transformWith(new TestTransformer());
 
         $this->assertEquals('tests', $resource->getResource()->getResourceKey());
     }
@@ -246,7 +246,7 @@ JSON;
         $resource = Fractal::create()
             ->withResourceName('tests')
             ->primitive($this->testBooks[0])
-            ->transformWith(new TestTransformer);
+            ->transformWith(new TestTransformer());
 
         $this->assertEquals('tests', $resource->getResource()->getResourceKey());
     }

@@ -23,8 +23,8 @@ class PaginatorTest extends TestCase
         $expectedArray = [
             'data' => [
                 [
-                    'id' => 1,
-                    'type' => null,
+                    'id'         => 1,
+                    'type'       => null,
                     'attributes' => [
                         'author' => 'Philip K Dick',
                     ],
@@ -32,18 +32,18 @@ class PaginatorTest extends TestCase
             ],
             'meta' => [
                 'pagination' => [
-                    'total' => 2,
-                    'count' => 1,
-                    'per_page' => 1,
+                    'total'        => 2,
+                    'count'        => 1,
+                    'per_page'     => 1,
                     'current_page' => 1,
-                    'total_pages' => 2,
+                    'total_pages'  => 2,
                 ],
             ],
             'links' => [
-                'self' => '/?page=1',
+                'self'  => '/?page=1',
                 'first' => '/?page=1',
-                'next' => '/?page=2',
-                'last' => '/?page=2',
+                'next'  => '/?page=2',
+                'last'  => '/?page=2',
             ],
         ];
 

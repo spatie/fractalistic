@@ -26,8 +26,8 @@ class CursorTest extends TestCase
         $expectedArray = [
             'data' => [
                 [
-                    'id' => 1,
-                    'type' => null,
+                    'id'         => 1,
+                    'type'       => null,
                     'attributes' => [
                         'author' => 'Philip K Dick',
                     ],
@@ -35,10 +35,10 @@ class CursorTest extends TestCase
             ],
             'meta' => [
                 'cursor' => [
-                    'prev' => $previousCursor,
+                    'prev'    => $previousCursor,
                     'current' => $currentCursor,
-                    'next' => $newCursor,
-                    'count' => $count,
+                    'next'    => $newCursor,
+                    'count'   => $count,
 
                 ],
             ],

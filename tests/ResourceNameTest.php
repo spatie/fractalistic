@@ -17,15 +17,15 @@ class ResourceNameTest extends TestCase
         $expectedArray = [
             'data' => [
                 [
-                    'id' => 1,
-                    'type' => 'books',
+                    'id'         => 1,
+                    'type'       => 'books',
                     'attributes' => [
                         'author' => 'Philip K Dick',
                     ],
                 ],
                 [
-                    'id' => 2,
-                    'type' => 'books',
+                    'id'         => 2,
+                    'type'       => 'books',
                     'attributes' => [
                         'author' => 'George R. R. Satan',
                     ],
@@ -48,15 +48,15 @@ class ResourceNameTest extends TestCase
         $expectedArray = [
             'data' => [
                 [
-                    'id' => 1,
-                    'type' => 'books',
+                    'id'         => 1,
+                    'type'       => 'books',
                     'attributes' => [
                         'author' => 'Philip K Dick',
                     ],
                 ],
                 [
-                    'id' => 2,
-                    'type' => 'books',
+                    'id'         => 2,
+                    'type'       => 'books',
                     'attributes' => [
                         'author' => 'George R. R. Satan',
                     ],
@@ -78,8 +78,8 @@ class ResourceNameTest extends TestCase
 
         $expectedArray = [
             'data' => [
-                'id' => 1,
-                'type' => 'book',
+                'id'         => 1,
+                'type'       => 'book',
                 'attributes' => [
                     'author' => 'Philip K Dick',
                 ],
@@ -100,15 +100,15 @@ class ResourceNameTest extends TestCase
         $expectedArray = [
             'data' => [
                 [
-                    'id' => 1,
-                    'type' => null,
+                    'id'         => 1,
+                    'type'       => null,
                     'attributes' => [
                         'author' => 'Philip K Dick',
                     ],
                 ],
                 [
-                    'id' => 2,
-                    'type' => null,
+                    'id'         => 2,
+                    'type'       => null,
                     'attributes' => [
                         'author' => 'George R. R. Satan',
                     ],
