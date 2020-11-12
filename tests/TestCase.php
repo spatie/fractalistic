@@ -16,7 +16,7 @@ abstract class TestCase extends PHPUnitTestCase
     /** @var string|\League\Fractal\Serializer\SerializerAbstract */
     protected $defaultSerializer;
 
-    public function setUp($defaultSerializer = '')
+    public function setUp($defaultSerializer = ''): void
     {
         $this->defaultSerializer = $defaultSerializer;
 
