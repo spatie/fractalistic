@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.9.1 - 2020-11-12
+
+- add support for PHP 8
+
 ## 2.9.0 - 2020-01-31
 
 - add support for Fractal 0.18
