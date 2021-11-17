@@ -4,7 +4,6 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/spatie/fractalistic/run-tests?label=tests)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/fractalistic.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/fractalistic)
-[![StyleCI](https://styleci.io/repos/76027929/shield?branch=master)](https://styleci.io/repos/76027929)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/fractalistic.svg?style=flat-square)](https://packagist.org/packages/spatie/fractalistic)
 
 [Fractal](http://fractal.thephpleague.com/) is an amazing package to transform data before using it in an API. Unfortunately working with Fractal can be a bit verbose.
