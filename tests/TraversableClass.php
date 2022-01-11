@@ -4,6 +4,7 @@ namespace Spatie\Fractalistic\Test;
 
 use ArrayIterator;
 use IteratorAggregate;
+use ReturnTypeWillChange;
 
 class TraversableClass implements IteratorAggregate
 {
@@ -18,6 +19,7 @@ class TraversableClass implements IteratorAggregate
     /**
      * @return array
      */
+    #[ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->items);

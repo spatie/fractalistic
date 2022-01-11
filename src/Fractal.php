@@ -6,6 +6,7 @@ use JsonSerializable;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface;
 use League\Fractal\Pagination\PaginatorInterface;
+use ReturnTypeWillChange;
 use Spatie\Fractalistic\Exceptions\InvalidTransformation;
 use Spatie\Fractalistic\Exceptions\NoTransformerSpecified;
 use Traversable;
@@ -455,6 +456,7 @@ class Fractal implements JsonSerializable
     /**
      * Convert the object into something JSON serializable.
      */
+    #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();
