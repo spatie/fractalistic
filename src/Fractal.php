@@ -455,7 +455,7 @@ class Fractal implements JsonSerializable
     /**
      * Convert the object into something JSON serializable.
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
