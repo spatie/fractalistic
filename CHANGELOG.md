@@ -2,6 +2,18 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.9.2 - 2022-03-18
+
+## What's Changed
+
+- fix: Php 8.1 support by @AlexJezior in https://github.com/spatie/fractalistic/pull/53
+
+## New Contributors
+
+- @AlexJezior made their first contribution in https://github.com/spatie/fractalistic/pull/53
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.9.1...2.9.2
+
 ## 2.9.1 - 2020-11-12
 
 - add support for PHP 8
