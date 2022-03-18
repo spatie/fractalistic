@@ -250,4 +250,19 @@ JSON;
 
         $this->assertEquals('tests', $resource->getResource()->getResourceKey());
     }
+
+    /** @test */
+    public function it_can_convert_into_something_that_is_json_serializable()
+    {
+        $jsonSerialized = $this->fractal
+            ->collection($this->testBooks, new TestTransformer())
+            ->jsonSerialize();
+
+        $expectedArray = ['data' => [
+            ['id' => 1, 'author' => 'Philip K Dick'],
+            ['id' => 2, 'author' => 'George R. R. Satan'],
+        ]];
+
+        $this->assertEquals($expectedArray, $jsonSerialized);
+    }
 }
