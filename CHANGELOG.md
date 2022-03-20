@@ -2,6 +2,18 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.9.3 - 2022-03-20
+
+## What's Changed
+
+- Fix: make jsonSerialize backward compatibile with PHP 7.4 by @albertoarena in https://github.com/spatie/fractalistic/pull/55
+
+## New Contributors
+
+- @albertoarena made their first contribution in https://github.com/spatie/fractalistic/pull/55
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.9.2...2.9.3
+
 ## 2.9.2 - 2022-03-18
 
 ## What's Changed
