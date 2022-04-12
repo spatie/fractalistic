@@ -2,6 +2,18 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.9.4 - 2022-04-12
+
+## What's Changed
+
+- fixed comp issue by @lukasvy in https://github.com/spatie/fractalistic/pull/58
+
+## New Contributors
+
+- @lukasvy made their first contribution in https://github.com/spatie/fractalistic/pull/58
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.9.3...2.9.4
+
 ## 2.9.3 - 2022-03-20
 
 ## What's Changed
