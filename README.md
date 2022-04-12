@@ -19,7 +19,7 @@ use League\Fractal\Resource\Collection;
 
 $books = [
    ['id'=>1, 'title'=>'Hogfather', 'characters' => [...]], 
-   ['id'=>2, 'title'=>'Game Of Kill Everyone', 'characters' => [...]]
+   ['id'=>2, 'title'=>'Game Of Thrones', 'characters' => [...]]
 ];
 
 $manager = new Manager();
@@ -234,7 +234,7 @@ This will return the following array:
 [
    'data' => [
         ['title' => 'Hogfather'],
-        ['title' => 'Game Of Kill Everyone'],
+        ['title' => 'Game Of Thrones'],
     ],
    'meta' => [
         ['key1' => 'value1'], 
