@@ -14,7 +14,7 @@ class ArraySerializer extends BaseArraySerializer
      *
      * @return array
      */
-    public function collection(string $resourceKey, array $data): array
+    public function collection(?string $resourceKey, array $data): array
     {
         return $data;
     }
