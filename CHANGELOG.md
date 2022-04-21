@@ -2,6 +2,18 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.9.5 - 2022-04-21
+
+## What's Changed
+
+- Support nullable return by @Casperhr in https://github.com/spatie/fractalistic/pull/60
+
+## New Contributors
+
+- @Casperhr made their first contribution in https://github.com/spatie/fractalistic/pull/60
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.9.4...2.9.5
+
 ## 2.9.4 - 2022-04-12
 
 ## What's Changed
