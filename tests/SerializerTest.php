@@ -3,6 +3,7 @@
 namespace Spatie\Fractalistic\Test;
 
 use Spatie\Fractalistic\ArraySerializer;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
 
 class SerializerTest extends TestCase
 {

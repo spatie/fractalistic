@@ -3,6 +3,7 @@
 namespace Spatie\Fractalistic\Test;
 
 use League\Fractal\Serializer\JsonApiSerializer;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
 
 class ResourceNameTest extends TestCase
 {

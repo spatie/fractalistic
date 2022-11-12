@@ -2,7 +2,7 @@
 
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Serializer\JsonApiSerializer;
-use Spatie\Fractalistic\Test\TestTransformer;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
 use function PHPUnit\Framework\assertEquals;
 
 it('generates data with cursor', function () {

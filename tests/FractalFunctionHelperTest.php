@@ -2,8 +2,8 @@
 
 use Spatie\Fractalistic\ArraySerializer;
 use Spatie\Fractalistic\Fractal;
-use Spatie\Fractalistic\Test\TestTransformer;
-use Spatie\Fractalistic\Test\TraversableClass;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
+use Spatie\Fractalistic\Test\TestClasses\TraversableClass;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 

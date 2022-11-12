@@ -5,8 +5,8 @@ use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Serializer\JsonApiSerializer;
 use Spatie\Fractalistic\ArraySerializer;
 use Spatie\Fractalistic\Fractal;
-use Spatie\Fractalistic\Test\NullableTransformer;
-use Spatie\Fractalistic\Test\TestTransformer;
+use Spatie\Fractalistic\Test\TestClasses\NullableTransformer;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 

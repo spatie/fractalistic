@@ -1,7 +1,7 @@
 <?php
 
 use Spatie\Fractalistic\Fractal;
-use Spatie\Fractalistic\Test\TestTransformerWithIncludes;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformerWithIncludes;
 use function PHPUnit\Framework\assertEquals;
 
 it('can parse excludes', function () {

@@ -2,6 +2,8 @@
 
 namespace Spatie\Fractalistic\Test;
 
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
+
 class ScopeTest extends TestCase
 {
     /** @test */
