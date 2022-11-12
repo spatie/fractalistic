@@ -1,9 +1,8 @@
 <?php
 
-namespace Spatie\Fractalistic\Test;
-
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Serializer\JsonApiSerializer;
+use Spatie\Fractalistic\Test\TestTransformer;
 use function PHPUnit\Framework\assertEquals;
 
 it('generates data with cursor', function () {
