@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Fractalistic\Test;
-
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Serializer\JsonApiSerializer;
 use Spatie\Fractalistic\ArraySerializer;
 use Spatie\Fractalistic\Fractal;
+use Spatie\Fractalistic\Test\NullableTransformer;
+use Spatie\Fractalistic\Test\TestTransformer;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 
