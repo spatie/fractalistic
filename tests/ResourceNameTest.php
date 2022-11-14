@@ -1,121 +1,110 @@
 <?php
 
-namespace Spatie\Fractalistic\Test;
-
 use League\Fractal\Serializer\JsonApiSerializer;
+use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
+use function PHPUnit\Framework\assertEquals;
 
-class ResourceNameTest extends TestCase
-{
-    /** @test */
-    public function it_uses_a_custom_resource_name_when_creating_a_collection()
-    {
-        $array = $this->fractal
-            ->collection($this->testBooks, new TestTransformer(), 'books')
-            ->serializeWith(new JsonApiSerializer())
-            ->toArray();
+it('uses a custom resource name when creating a collection', function () {
+    $array = $this->fractal
+        ->collection($this->testBooks, new TestTransformer(), 'books')
+        ->serializeWith(new JsonApiSerializer())
+        ->toArray();
 
-        $expectedArray = [
-            'data' => [
-                [
-                    'id' => 1,
-                    'type' => 'books',
-                    'attributes' => [
-                        'author' => 'Philip K Dick',
-                    ],
-                ],
-                [
-                    'id' => 2,
-                    'type' => 'books',
-                    'attributes' => [
-                        'author' => 'George R. R. Satan',
-                    ],
-                ],
+    $expectedArray = [
+        'data' => [
+        [
+            'id' => 1,
+            'type' => 'books',
+            'attributes' => [
+            'author' => 'Philip K Dick',
             ],
-        ];
-
-        $this->assertEquals($expectedArray, $array);
-    }
-
-    /** @test */
-    public function it_uses_a_custom_resource_name_when_using_setter()
-    {
-        $array = $this->fractal
-            ->collection($this->testBooks, new TestTransformer())
-            ->withResourceName('books')
-            ->serializeWith(new JsonApiSerializer())
-            ->toArray();
-
-        $expectedArray = [
-            'data' => [
-                [
-                    'id' => 1,
-                    'type' => 'books',
-                    'attributes' => [
-                        'author' => 'Philip K Dick',
-                    ],
-                ],
-                [
-                    'id' => 2,
-                    'type' => 'books',
-                    'attributes' => [
-                        'author' => 'George R. R. Satan',
-                    ],
-                ],
+        ],
+        [
+            'id' => 2,
+            'type' => 'books',
+            'attributes' => [
+            'author' => 'George R. R. Satan',
             ],
-        ];
+        ],
+        ],
+    ];
 
-        $this->assertEquals($expectedArray, $array);
-    }
+    assertEquals($expectedArray, $array);
+});
 
-    /** @test */
-    public function it_uses_a_custom_resource_name_for_an_item()
-    {
-        $array = $this->fractal
-            ->item($this->testBooks[0], new TestTransformer())
-            ->withResourceName('book')
-            ->serializeWith(new JsonApiSerializer())
-            ->toArray();
+it('uses a custom resource name when using setter', function () {
+    $array = $this->fractal
+        ->collection($this->testBooks, new TestTransformer())
+        ->withResourceName('books')
+        ->serializeWith(new JsonApiSerializer())
+        ->toArray();
 
-        $expectedArray = [
-            'data' => [
-                'id' => 1,
-                'type' => 'book',
-                'attributes' => [
-                    'author' => 'Philip K Dick',
-                ],
+    $expectedArray = [
+        'data' => [
+        [
+            'id' => 1,
+            'type' => 'books',
+            'attributes' => [
+            'author' => 'Philip K Dick',
             ],
-        ];
-
-        $this->assertEquals($expectedArray, $array);
-    }
-
-    /** @test */
-    public function it_uses_null_as_resource_name_when_not_set()
-    {
-        $array = $this->fractal
-            ->collection($this->testBooks, new TestTransformer())
-            ->serializeWith(new JsonApiSerializer())
-            ->toArray();
-
-        $expectedArray = [
-            'data' => [
-                [
-                    'id' => 1,
-                    'type' => null,
-                    'attributes' => [
-                        'author' => 'Philip K Dick',
-                    ],
-                ],
-                [
-                    'id' => 2,
-                    'type' => null,
-                    'attributes' => [
-                        'author' => 'George R. R. Satan',
-                    ],
-                ],
+        ],
+        [
+            'id' => 2,
+            'type' => 'books',
+            'attributes' => [
+            'author' => 'George R. R. Satan',
             ],
-        ];
+        ],
+        ],
+    ];
 
-        $this->assertEquals($expectedArray, $array);
-    }
-}
+    assertEquals($expectedArray, $array);
+});
+
+it('uses a custom resource name for an item', function () {
+    $array = $this->fractal
+        ->item($this->testBooks[0], new TestTransformer())
+        ->withResourceName('book')
+        ->serializeWith(new JsonApiSerializer())
+        ->toArray();
+
+    $expectedArray = [
+        'data' => [
+        'id' => 1,
+        'type' => 'book',
+        'attributes' => [
+            'author' => 'Philip K Dick',
+        ],
+        ],
+    ];
+
+    assertEquals($expectedArray, $array);
+});
+
+it('uses null as resource name when not set', function () {
+    $array = $this->fractal
+        ->collection($this->testBooks, new TestTransformer())
+        ->serializeWith(new JsonApiSerializer())
+        ->toArray();
+
+    $expectedArray = [
+        'data' => [
+        [
+            'id' => 1,
+            'type' => null,
+            'attributes' => [
+            'author' => 'Philip K Dick',
+            ],
+        ],
+        [
+            'id' => 2,
+            'type' => null,
+            'attributes' => [
+            'author' => 'George R. R. Satan',
+            ],
+        ],
+        ],
+    ];
+
+    assertEquals($expectedArray, $array);
+});

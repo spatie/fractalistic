@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Fractalistic\Test;
+namespace Spatie\Fractalistic\Test\TestClasses;
 
 use League\Fractal\TransformerAbstract;
 

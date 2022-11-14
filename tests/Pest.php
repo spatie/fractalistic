@@ -1,26 +1,16 @@
 <?php
 
-namespace Spatie\Fractalistic\Test;
+/*
+|--------------------------------------------------------------------------
+| Test Case
+|--------------------------------------------------------------------------
+*/
 
-use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use Spatie\Fractalistic\Fractal;
 
-abstract class TestCase extends PHPUnitTestCase
-{
-    /** @var \Spatie\Fractalistic\Fractal */
-    protected $fractal;
-
-    /** @var array */
-    protected $testBooks;
-
-    /** @var string|\League\Fractal\Serializer\SerializerAbstract */
-    protected $defaultSerializer;
-
-    public function setUp($defaultSerializer = ''): void
-    {
-        $this->defaultSerializer = $defaultSerializer;
-
-        parent::setUp();
+uses()
+    ->beforeEach(function () {
+        $this->defaultSerializer = '';
 
         $this->fractal = Fractal::create();
 
@@ -44,5 +34,17 @@ abstract class TestCase extends PHPUnitTestCase
                 'publisher' => 'Bloody Fantasy inc.',
             ],
         ];
-    }
-}
+    })
+    ->in('.');
+
+/*
+|--------------------------------------------------------------------------
+| Expectations
+|--------------------------------------------------------------------------
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Functions
+|--------------------------------------------------------------------------
+*/
