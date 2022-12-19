@@ -9,8 +9,8 @@ class ArraySerializer extends BaseArraySerializer
     /**
      * Serialize a collection to a plain array.
      *
-     * @param string $resourceKey
-     * @param array  $data
+     * @param string|null $resourceKey
+     * @param array $data
      *
      * @return array
      */
