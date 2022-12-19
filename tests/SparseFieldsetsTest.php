@@ -12,7 +12,7 @@ it('can filter out fields', function () {
         'key3' => 'value3',
         ], function ($item) {
           return $item;
-      }, new ArraySerializer())
+      }, 'test_name')
       ->withResourceName('test')
       ->parseFieldsets(['test' => 'key1,key3'])
       ->toArray();
