@@ -5,7 +5,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/fractalistic.svg?style=flat-square)](https://packagist.org/packages/spatie/fractalistic)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/spatie/fractalistic/run-tests?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/spatie/fractalistic/run-tests.yml?branch=main&label=tests&style=flat-square)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/fractalistic.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/fractalistic)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/fractalistic.svg?style=flat-square)](https://packagist.org/packages/spatie/fractalistic)
 
