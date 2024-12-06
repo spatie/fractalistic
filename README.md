@@ -50,6 +50,54 @@ Fractal::create($books, new BookTransformer())->toArray();
 If you want to use this package inside Laravel, it's recommend to use [laravel-fractal](https://github.com/spatie/laravel-fractal) instead. That package contains a few more whistles and bells specifically targetted at Laravel users.
 
 
+### Notable methods
+#### `parseIncludes`
+You can parse includes by calling `parseIncludes`.  
+This will include the specified relationships in the output.
+```php
+Fractal::create()
+   ->collection($books)
+   ->transformWith(new BookTransformer())
+   ->parseIncludes('characters,authors.books') // or pass an array ['characters', 'authors.books']
+   ->toArray();
+```
+> Note: Specified relationships must be defined in the transformer's `availableIncludes` method.
+
+#### `parseExcludes`
+You can parse excludes by calling `parseExcludes`.  
+This will exclude the specified relationships in the output.
+
+```php
+Fractal::create()
+   ->collection($books)
+   ->transformWith(new BookTransformer())
+   ->parseExcludes('characters,authors.books') // or pass an array ['characters', 'authors.books']
+   // it can also be used in combination with parseIncludes
+   // ->parseIncludes('publishers')
+   ->toArray();
+```
+This method is particularly useful when you want to exclude relationships that are included by default.
+> Note: `Excludes` will always take precedence over `includes`.
+
+#### `parseFieldsets`
+You can parse fieldsets by calling `parseFieldsets`.  
+This will only include the specified fields in the output.
+> Note: To use this feature, you "MUST" set the resource name or else it will not work.
+
+```php
+Fractal::create()
+    // the resource name can be set using the collection/item method as the third parameter
+    ->collection($books, null, 'books')
+    // or by using the withResourceName method
+    // ->withResourceName('books')
+    ->transformWith(new BookTransformer())
+    ->parseFieldsets([
+            // resource name => fields
+            'books' => ['author', 'id'],
+        ],
+    )->toArray();
+```
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all 
 our open source projects [on our website](https://spatie.be/opensource).
 
