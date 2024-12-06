@@ -7,6 +7,10 @@
 */
 
 use Spatie\Fractalistic\Fractal;
+use Spatie\Fractalistic\Test\TestClasses\Author;
+use Spatie\Fractalistic\Test\TestClasses\Book;
+use Spatie\Fractalistic\Test\TestClasses\Character;
+use Spatie\Fractalistic\Test\TestClasses\Publisher;
 
 uses()
     ->beforeEach(function () {
@@ -48,3 +52,53 @@ uses()
 | Functions
 |--------------------------------------------------------------------------
 */
+function getTestPublishers(): array
+{
+    $authorA = new Author('Philip K Dick', 'philip@example.org');
+    $authorB = new Author('George R. R. Satan', 'george@example.org');
+
+    $charA = new Character('Death');
+    $charB = new Character('Hex');
+    $charC = new Character('Ned Stark');
+    $charD = new Character('Tywin Lannister');
+
+    $bookA = new Book(
+        '1',
+        'Hogfather',
+        '1998',
+    );
+    $bookB = new Book(
+        '2',
+        'Game Of Kill Everyone',
+        '2014',
+    );
+
+    $publisherA = new Publisher(
+        'Elephant books',
+        'Amazon rainforests, near the river',
+    );
+    $publisherB = new Publisher(
+        'Bloody Fantasy inc.',
+        'Diagon Alley, before the bank, to the left',
+    );
+
+    $bookA->author = $authorA;
+    $bookA->publisher = $publisherA;
+    $bookA->characters = [$charA, $charB];
+    $authorA->characters = [$charA, $charB];
+    $charA->book = $bookA;
+    $charB->book = $bookA;
+    $publisherA->books = [$bookA];
+    $authorA->books = [$bookA];
+
+    $bookB->author = $authorB;
+    $bookB->publisher = $publisherB;
+    $bookB->characters = [$charC, $charD];
+    $authorB->characters = [$charC, $charD];
+    $charC->book = $bookB;
+    $charD->book = $bookB;
+    $publisherB->books = [$bookB];
+    $authorB->books = [$bookB];
+
+    return [$publisherA, $publisherB];
+}
