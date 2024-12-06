@@ -9,7 +9,6 @@
 use Spatie\Fractalistic\Fractal;
 use Spatie\Fractalistic\Test\TestClasses\Author;
 use Spatie\Fractalistic\Test\TestClasses\Book;
-use Spatie\Fractalistic\Test\TestClasses\Character;
 use Spatie\Fractalistic\Test\TestClasses\Publisher;
 
 uses()
@@ -57,11 +56,6 @@ function getTestPublishers(): array
     $authorA = new Author('Philip K Dick', 'philip@example.org');
     $authorB = new Author('George R. R. Satan', 'george@example.org');
 
-    $charA = new Character('Death');
-    $charB = new Character('Hex');
-    $charC = new Character('Ned Stark');
-    $charD = new Character('Tywin Lannister');
-
     $bookA = new Book(
         '1',
         'Hogfather',
@@ -84,19 +78,11 @@ function getTestPublishers(): array
 
     $bookA->author = $authorA;
     $bookA->publisher = $publisherA;
-    $bookA->characters = [$charA, $charB];
-    $authorA->characters = [$charA, $charB];
-    $charA->book = $bookA;
-    $charB->book = $bookA;
     $publisherA->books = [$bookA];
     $authorA->books = [$bookA];
 
     $bookB->author = $authorB;
     $bookB->publisher = $publisherB;
-    $bookB->characters = [$charC, $charD];
-    $authorB->characters = [$charC, $charD];
-    $charC->book = $bookB;
-    $charD->book = $bookB;
     $publisherB->books = [$bookB];
     $authorB->books = [$bookB];
 
