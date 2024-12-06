@@ -1,6 +1,7 @@
 <?php
 
 use Spatie\Fractalistic\Fractal;
+use Spatie\Fractalistic\Test\TestClasses\PublisherTransformer;
 use Spatie\Fractalistic\Test\TestClasses\TestTransformer;
 use function PHPUnit\Framework\assertEquals;
 
@@ -86,3 +87,66 @@ it('knows to ignore invalid includes param', function () {
         ->toArray();
     assertEquals($expectedArray, $array);
 });
+
+it('can parse nested includes', function ($includes): void {
+    $fractal = Fractal::create(getTestPublishers(), new PublisherTransformer())
+        ->parseIncludes($includes);
+
+    $result = $fractal->toArray();
+
+    $expectedArray = [
+        'data' => [
+            [
+                'name' => 'Elephant books',
+                'address' => 'Amazon rainforests, near the river',
+                'books' => [
+                    'data' => [
+                        [
+                            'id' => 1,
+                            'title' => 'Hogfather',
+                            'author' => [
+                                'data' => [
+                                    'name' => 'Philip K Dick',
+                                    'email' => 'philip@example.org',
+                                ],
+                            ],
+                        ]
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Bloody Fantasy inc.',
+                'address' => 'Diagon Alley, before the bank, to the left',
+                'books' => [
+                    'data' => [
+                        [
+                            'id' => 2,
+                            'title' => 'Game Of Kill Everyone',
+                            'author' => [
+                                'data' => [
+                                    'name' => 'George R. R. Satan',
+                                    'email' => 'george@example.org',
+                                ],
+                            ],
+                        ]
+                    ],
+                ],
+            ],
+        ],
+    ];
+
+    expect($result)->toBe($expectedArray);
+})->with([
+    [
+        'string' => 'books,books.author',
+    ],
+    [
+        'array' => ['books', 'books.author'],
+    ],
+    [
+        'string: auto-loads parent' => 'books.author',
+    ],
+    [
+        'array: auto-loads parent' => ['books.author'],
+    ],
+]);
