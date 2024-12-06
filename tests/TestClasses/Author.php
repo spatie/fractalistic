@@ -8,6 +8,8 @@ class Author
     public string $email;
     /** @var Book[] */
     public ?array $books = [];
+    /** @var Character[] */
+    public array $characters = [];
 
     public function __construct(string $name, string $email)
     {
@@ -18,5 +20,10 @@ class Author
     public function books(): array
     {
         return $this->books;
+    }
+
+    public function characters(): array
+    {
+        return $this->characters;
     }
 }

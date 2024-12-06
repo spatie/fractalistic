@@ -45,3 +45,124 @@ it('can parse include parameters', function ($resourceName, string $include, str
         ]),
     ],
 ]);
+
+it('can access scope in transformer', function (): void {
+    $fractal = Fractal::create(getTestPublishers(), new PublisherTransformer())
+        ->parseIncludes('books.characters,books.author.characters');
+
+    $result = $fractal->toArray();
+
+    expect($result)->toEqual([
+        'data' => [
+            [
+                'name' => 'Elephant books',
+                'address' => 'Amazon rainforests, near the river',
+                'books' =>
+                    [
+                        'data' => [
+                            [
+                                'id' => 1,
+                                'title' => 'Hogfather',
+                                'characters' => [
+                                    'data' => [
+                                        [
+                                            'name' => 'Death',
+                                            'current_scope' => 'characters',
+                                            'parent_scope' => 'books',
+                                            'scope_identifier' => 'books.characters',
+                                            'called_by_book' => 'yes!',
+                                        ],
+                                        [
+                                            'name' => 'Hex',
+                                            'current_scope' => 'characters',
+                                            'parent_scope' => 'books',
+                                            'scope_identifier' => 'books.characters',
+                                            'called_by_book' => 'yes!',
+                                        ],
+                                    ]
+                                ],
+                                'author' => [
+                                    'data' => [
+                                        'name' => 'Philip K Dick',
+                                        'email' => 'philip@example.org',
+                                        'characters' => [
+                                            'data' => [
+                                                [
+                                                    'name' => 'Death',
+                                                    'current_scope' => 'characters',
+                                                    'parent_scope' => 'author',
+                                                    'scope_identifier' => 'books.author.characters',
+                                                    'called_by_author' => 'indeed!',
+                                                ],
+                                                [
+                                                    'name' => 'Hex',
+                                                    'current_scope' => 'characters',
+                                                    'parent_scope' => 'author',
+                                                    'scope_identifier' => 'books.author.characters',
+                                                    'called_by_author' => 'indeed!',
+                                                ],
+                                            ]
+                                        ],
+                                    ]
+                                ],
+                            ],
+                        ],
+                    ],
+            ],
+            [
+                'name' => 'Bloody Fantasy inc.',
+                'address' => 'Diagon Alley, before the bank, to the left',
+                'books' => [
+                    'data' => [
+                        [
+                            'id' => 2,
+                            'title' => 'Game Of Kill Everyone',
+                            'characters' => [
+                                'data' => [
+                                    [
+                                        'name' => 'Ned Stark',
+                                        'current_scope' => 'characters',
+                                        'parent_scope' => 'books',
+                                        'scope_identifier' => 'books.characters',
+                                        'called_by_book' => 'yes!',
+                                    ],
+                                    [
+                                        'name' => 'Tywin Lannister',
+                                        'current_scope' => 'characters',
+                                        'parent_scope' => 'books',
+                                        'scope_identifier' => 'books.characters',
+                                        'called_by_book' => 'yes!',
+                                    ],
+                                ]
+                            ],
+                            'author' => [
+                                'data' => [
+                                    'name' => 'George R. R. Satan',
+                                    'email' => 'george@example.org',
+                                    'characters' => [
+                                        'data' => [
+                                            [
+                                                'name' => 'Ned Stark',
+                                                'current_scope' => 'characters',
+                                                'parent_scope' => 'author',
+                                                'scope_identifier' => 'books.author.characters',
+                                                'called_by_author' => 'indeed!',
+                                            ],
+                                            [
+                                                'name' => 'Tywin Lannister',
+                                                'current_scope' => 'characters',
+                                                'parent_scope' => 'author',
+                                                'scope_identifier' => 'books.author.characters',
+                                                'called_by_author' => 'indeed!',
+                                            ],
+                                        ]
+                                    ],
+                                ],
+                            ]
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ]);
+});
