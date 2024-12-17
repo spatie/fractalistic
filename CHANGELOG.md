@@ -2,6 +2,34 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.10.0 - 2024-12-17
+
+### What's Changed
+
+* Refactor tests to pest by @AyoobMH in https://github.com/spatie/fractalistic/pull/63
+* Add Dependabot Automation by @patinthehat in https://github.com/spatie/fractalistic/pull/64
+* Bump actions/checkout from 2 to 3 by @dependabot in https://github.com/spatie/fractalistic/pull/66
+* Add PHP 8.2 Support by @patinthehat in https://github.com/spatie/fractalistic/pull/65
+* Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/spatie/fractalistic/pull/69
+* Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/spatie/fractalistic/pull/70
+* Fix Broken Badge by @SupianIDz in https://github.com/spatie/fractalistic/pull/71
+* Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/spatie/fractalistic/pull/72
+* Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/spatie/fractalistic/pull/73
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/spatie/fractalistic/pull/77
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/fractalistic/pull/78
+* Test nested includes by @Mohammad-Alavi in https://github.com/spatie/fractalistic/pull/79
+* Allow accessing the transformer by @Mohammad-Alavi in https://github.com/spatie/fractalistic/pull/80
+
+### New Contributors
+
+* @AyoobMH made their first contribution in https://github.com/spatie/fractalistic/pull/63
+* @patinthehat made their first contribution in https://github.com/spatie/fractalistic/pull/64
+* @dependabot made their first contribution in https://github.com/spatie/fractalistic/pull/66
+* @SupianIDz made their first contribution in https://github.com/spatie/fractalistic/pull/71
+* @Mohammad-Alavi made their first contribution in https://github.com/spatie/fractalistic/pull/79
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.9.5...2.10.0
+
 ## 2.9.5 - 2022-04-21
 
 ## What's Changed
