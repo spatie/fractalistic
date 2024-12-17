@@ -228,3 +228,27 @@ it('can convert into something that is json serializable', function () {
 
     assertEquals($expectedArray, $jsonSerialized);
 });
+
+it('can get the transformer', function ($transformer): void {
+    $fractal = Fractal::create();
+    $fractal->transformWith($transformer);
+
+    $result = $fractal->getTransformer();
+
+    expect($result)->toBe($transformer);
+})->with([
+    'instance' => [
+        new TestTransformer(),
+    ],
+    'fqcn' => [
+        TestTransformer::class,
+    ],
+    'callable' => [
+        function (): array {
+            return [];
+        },
+    ],
+    'null' => [
+        null,
+    ]
+]);

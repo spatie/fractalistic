@@ -6,6 +6,7 @@ use JsonSerializable;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\CursorInterface;
 use League\Fractal\Pagination\PaginatorInterface;
+use League\Fractal\TransformerAbstract;
 use Spatie\Fractalistic\Exceptions\InvalidTransformation;
 use Spatie\Fractalistic\Exceptions\NoTransformerSpecified;
 use Traversable;
@@ -21,7 +22,7 @@ class Fractal implements JsonSerializable
     /** @var string|\League\Fractal\Serializer\SerializerAbstract */
     protected $serializer;
 
-    /** @var string|callable|\League\Fractal\TransformerAbstract */
+    /** @var string|callable|\League\Fractal\TransformerAbstract|null */
     protected $transformer;
 
     /** @var \League\Fractal\Pagination\PaginatorInterface */
@@ -177,7 +178,7 @@ class Fractal implements JsonSerializable
     /**
      * Set the class or function that will perform the transform.
      *
-     * @param string|callable|\League\Fractal\TransformerAbstract $transformer
+     * @param string|callable|\League\Fractal\TransformerAbstract|null $transformer
      *
      * @return $this
      */
@@ -461,6 +462,16 @@ class Fractal implements JsonSerializable
     public function jsonSerialize(): ?array
     {
         return $this->toArray();
+    }
+
+    /**
+     * Get the transformer.
+     *
+     * @return string|callable|\League\Fractal\TransformerAbstract|null
+     */
+    public function getTransformer()
+    {
+        return $this->transformer;
     }
 
     /**
