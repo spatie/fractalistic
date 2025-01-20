@@ -7,6 +7,8 @@ class Book
     public string $id;
     public string $title;
     public string $yr;
+    /** @var Character[] */
+    public array $characters = [];
     public ?Publisher $publisher = null;
     public ?Author $author = null;
 
@@ -23,6 +25,14 @@ class Book
     public function publisher(): ?Publisher
     {
         return $this->publisher;
+    }
+
+    /**
+     * @return Character[]
+     */
+    public function characters(): array
+    {
+        return $this->characters;
     }
 
     public function author(): ?Author
