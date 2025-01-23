@@ -446,7 +446,7 @@ class Fractal implements JsonSerializable
     /**
      * Return the name of the resource.
      *
-     * @return string
+     * @return string|null
      */
     public function getResourceName()
     {
