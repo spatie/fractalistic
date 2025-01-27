@@ -2,6 +2,15 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.11.0 - 2025-01-27
+
+### What's Changed
+
+* Allow overriding resource classes by @Mohammad-Alavi in https://github.com/spatie/fractalistic/pull/84
+* Update docblock by @Mohammad-Alavi in https://github.com/spatie/fractalistic/pull/83
+
+**Full Changelog**: https://github.com/spatie/fractalistic/compare/2.10.1...2.11.0
+
 ## 2.10.1 - 2025-01-20
 
 ### What's Changed
