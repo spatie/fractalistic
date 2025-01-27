@@ -1,6 +1,9 @@
 <?php
 
 use League\Fractal\Pagination\Cursor;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
+use League\Fractal\Resource\NullResource;
 use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Serializer\JsonApiSerializer;
 use Spatie\Fractalistic\ArraySerializer;
@@ -252,3 +255,20 @@ it('can get the transformer', function ($transformer): void {
         null,
     ]
 ]);
+
+it('can locate default resource classes', function (): void {
+    $resource = Fractal::create()->item([])->transformWith(new TestTransformer());
+    expect($resource->getResourceClass())->toBe(Item::class);
+
+    $resource = Fractal::create('test', new TestTransformer());
+    expect($resource->getResourceClass())->toBe(Item::class);
+
+    $resource = Fractal::create()->collection([])->transformWith(new TestTransformer());
+    expect($resource->getResourceClass())->toBe(Collection::class);
+
+    $resource = Fractal::create([], new TestTransformer());
+    expect($resource->getResourceClass())->toBe(Collection::class);
+
+    $resource = Fractal::create(null, new TestTransformer());
+    expect($resource->getResourceClass())->toBe(NullResource::class);
+});

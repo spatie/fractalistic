@@ -410,6 +410,24 @@ class Fractal implements JsonSerializable
     }
 
     /**
+     * Get the resource class.
+     *
+     * @return string
+     *
+     * @throws \Spatie\Fractalistic\Exceptions\InvalidTransformation
+     */
+    public function getResourceClass(): string
+    {
+        $class = 'League\\Fractal\\Resource\\'.ucfirst($this->dataType);
+
+        if (! class_exists($class)) {
+            throw new InvalidTransformation();
+        }
+
+        return $class;
+    }
+
+    /**
      * Get the resource.
      *
      * @return \League\Fractal\Resource\ResourceInterface
@@ -418,16 +436,11 @@ class Fractal implements JsonSerializable
      */
     public function getResource()
     {
-        $resourceClass = 'League\\Fractal\\Resource\\'.ucfirst($this->dataType);
-
-        if (! class_exists($resourceClass)) {
-            throw new InvalidTransformation();
-        }
-
         if (is_string($this->transformer)) {
             $this->transformer = new $this->transformer;
         }
 
+        $resourceClass = $this->getResourceClass();
         $resource = new $resourceClass($this->data, $this->transformer, $this->resourceName);
 
         $resource->setMeta($this->meta);
