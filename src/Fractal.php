@@ -46,8 +46,8 @@ class Fractal implements JsonSerializable
     /** @var mixed */
     protected $data;
 
-    /** @var string */
-    protected $resourceName;
+    /** @var string|null */
+    protected $resourceName = null;
 
     /** @var array */
     protected $meta = [];
@@ -459,7 +459,7 @@ class Fractal implements JsonSerializable
     /**
      * Return the name of the resource.
      *
-     * @return string
+     * @return string|null
      */
     public function getResourceName()
     {
