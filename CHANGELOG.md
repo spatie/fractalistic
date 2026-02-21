@@ -2,6 +2,10 @@
 
 All notable changes to `fractalistic` will be documented in this file
 
+## 2.11.1 - 2026-02-21
+
+Add Laravel 13 support
+
 ## 2.11.0 - 2025-01-27
 
 ### What's Changed
