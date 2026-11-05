@@ -137,16 +137,8 @@ it('can parse nested includes', function ($includes): void {
 
     expect($result)->toBe($expectedArray);
 })->with([
-    [
-        'string' => 'books,books.author',
-    ],
-    [
-        'array' => ['books', 'books.author'],
-    ],
-    [
-        'string: auto-loads parent' => 'books.author',
-    ],
-    [
-        'array: auto-loads parent' => ['books.author'],
-    ],
+    'string' => ['books,books.author'],
+    'array' => [['books', 'books.author']],
+    'string: auto-loads parent' => ['books.author'],
+    'array: auto-loads parent' => [['books.author']],
 ]);
