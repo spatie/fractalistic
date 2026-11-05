@@ -9,7 +9,7 @@ class NullableTransformer extends TestTransformer
      *
      * @return array
      */
-    public function transform(array $book = null)
+    public function transform(?array $book = null)
     {
         return is_null($book) ? [] : parent::transform($book);
     }
